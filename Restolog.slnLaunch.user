@@ -1,0 +1,27 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "Restolog.Business\\Restolog.Business.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Restolog.DataAccess\\Restolog.DataAccess.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Restolog.Core\\Restolog.Core.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Restolog.Entities\\Restolog.Entities.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Restolog.UI\\Restolog.UI.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
