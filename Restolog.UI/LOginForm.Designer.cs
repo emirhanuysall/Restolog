@@ -1,6 +1,6 @@
 ﻿namespace Restolog.UI
 {
-    partial class LOginForm
+    partial class LoginForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,35 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
-            textBox1 = new TextBox();
+            btnLogin = new Button();
+            txtUsername = new TextBox();
             label1 = new Label();
-            textBox2 = new TextBox();
+            txtPassword = new TextBox();
             label2 = new Label();
             label3 = new Label();
             SuspendLayout();
             // 
-            // button1
+            // btnLogin
             // 
-            button1.BackColor = Color.Green;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            button1.Location = new Point(101, 199);
-            button1.Name = "button1";
-            button1.Size = new Size(111, 30);
-            button1.TabIndex = 1;
-            button1.Text = "Giriş Yap";
-            button1.UseVisualStyleBackColor = false;
+            btnLogin.BackColor = Color.Green;
+            btnLogin.FlatStyle = FlatStyle.Flat;
+            btnLogin.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            btnLogin.Location = new Point(101, 199);
+            btnLogin.Name = "btnLogin";
+            btnLogin.Size = new Size(111, 30);
+            btnLogin.TabIndex = 1;
+            btnLogin.Text = "Giriş Yap";
+            btnLogin.UseVisualStyleBackColor = false;
+            btnLogin.Click += btnLogin_Click;
             // 
-            // textBox1
+            // txtUsername
             // 
-            textBox1.BackColor = SystemColors.ScrollBar;
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Location = new Point(86, 115);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(138, 23);
-            textBox1.TabIndex = 5;
+            txtUsername.BackColor = SystemColors.ScrollBar;
+            txtUsername.BorderStyle = BorderStyle.FixedSingle;
+            txtUsername.Location = new Point(86, 115);
+            txtUsername.Multiline = true;
+            txtUsername.Name = "txtUsername";
+            txtUsername.Size = new Size(138, 23);
+            txtUsername.TabIndex = 5;
             // 
             // label1
             // 
@@ -68,15 +69,15 @@
             label1.TabIndex = 4;
             label1.Text = "Kullanıcı Girişi";
             // 
-            // textBox2
+            // txtPassword
             // 
-            textBox2.BackColor = SystemColors.ScrollBar;
-            textBox2.BorderStyle = BorderStyle.FixedSingle;
-            textBox2.Location = new Point(86, 158);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(138, 23);
-            textBox2.TabIndex = 6;
+            txtPassword.BackColor = SystemColors.ScrollBar;
+            txtPassword.BorderStyle = BorderStyle.FixedSingle;
+            txtPassword.Location = new Point(86, 158);
+            txtPassword.Multiline = true;
+            txtPassword.Name = "txtPassword";
+            txtPassword.Size = new Size(138, 23);
+            txtPassword.TabIndex = 6;
             // 
             // label2
             // 
@@ -98,7 +99,7 @@
             label3.TabIndex = 8;
             label3.Text = "Şifre";
             // 
-            // LOginForm
+            // LoginForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -106,14 +107,14 @@
             ClientSize = new Size(320, 297);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(txtPassword);
+            Controls.Add(txtUsername);
             Controls.Add(label1);
-            Controls.Add(button1);
+            Controls.Add(btnLogin);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "LOginForm";
+            Name = "LoginForm";
             Text = "Giriş";
             ResumeLayout(false);
             PerformLayout();
@@ -121,10 +122,10 @@
 
         #endregion
 
-        private Button button1;
-        private TextBox textBox1;
+        private Button btnLogin;
+        private TextBox txtUsername;
         private Label label1;
-        private TextBox textBox2;
+        private TextBox txtPassword;
         private Label label2;
         private Label label3;
     }

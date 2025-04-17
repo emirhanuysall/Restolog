@@ -14,7 +14,20 @@ namespace Restolog.UI
     {
         public OrderManagementForm()
         {
+            this.StartPosition = FormStartPosition.CenterScreen;
+
+
             InitializeComponent();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -29,16 +29,18 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            button6 = new Button();
             panel4 = new Panel();
+            lblRole = new Label();
+            lblUsername = new Label();
             label6 = new Label();
             label5 = new Label();
             label4 = new Label();
+            button6 = new Button();
             button5 = new Button();
             button4 = new Button();
             button3 = new Button();
-            button2 = new Button();
-            button1 = new Button();
+            btnReturn = new Button();
+            btnLogout = new Button();
             label2 = new Label();
             panel2 = new Panel();
             dataGridView1 = new DataGridView();
@@ -63,42 +65,52 @@
             // panel1
             // 
             panel1.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Controls.Add(button6);
             panel1.Controls.Add(panel4);
+            panel1.Controls.Add(button6);
             panel1.Controls.Add(button5);
             panel1.Controls.Add(button4);
             panel1.Controls.Add(button3);
-            panel1.Controls.Add(button2);
-            panel1.Controls.Add(button1);
+            panel1.Controls.Add(btnReturn);
+            panel1.Controls.Add(btnLogout);
             panel1.Controls.Add(label2);
             panel1.Location = new Point(12, 33);
             panel1.Name = "panel1";
             panel1.Size = new Size(169, 477);
             panel1.TabIndex = 0;
             // 
-            // button6
-            // 
-            button6.BackColor = Color.DodgerBlue;
-            button6.FlatStyle = FlatStyle.Flat;
-            button6.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            button6.Location = new Point(3, 227);
-            button6.Name = "button6";
-            button6.Size = new Size(161, 41);
-            button6.TabIndex = 12;
-            button6.Text = "Siparişi Tamamla";
-            button6.UseVisualStyleBackColor = false;
-            // 
             // panel4
             // 
             panel4.BackColor = Color.AliceBlue;
             panel4.BorderStyle = BorderStyle.FixedSingle;
+            panel4.Controls.Add(lblRole);
+            panel4.Controls.Add(lblUsername);
             panel4.Controls.Add(label6);
             panel4.Controls.Add(label5);
             panel4.Controls.Add(label4);
             panel4.Location = new Point(3, 20);
             panel4.Name = "panel4";
             panel4.Size = new Size(161, 58);
-            panel4.TabIndex = 11;
+            panel4.TabIndex = 13;
+            // 
+            // lblRole
+            // 
+            lblRole.AutoSize = true;
+            lblRole.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            lblRole.Location = new Point(80, 37);
+            lblRole.Name = "lblRole";
+            lblRole.Size = new Size(31, 13);
+            lblRole.TabIndex = 12;
+            lblRole.Text = "Rolü";
+            // 
+            // lblUsername
+            // 
+            lblUsername.AutoSize = true;
+            lblUsername.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            lblUsername.Location = new Point(80, 19);
+            lblUsername.Name = "lblUsername";
+            lblUsername.Size = new Size(24, 13);
+            lblUsername.TabIndex = 11;
+            lblUsername.Text = "Adı";
             // 
             // label6
             // 
@@ -129,6 +141,18 @@
             label4.Size = new Size(115, 13);
             label4.TabIndex = 7;
             label4.Text = "Aktif Kullanıcı Bilgiler";
+            // 
+            // button6
+            // 
+            button6.BackColor = Color.DodgerBlue;
+            button6.FlatStyle = FlatStyle.Flat;
+            button6.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            button6.Location = new Point(3, 227);
+            button6.Name = "button6";
+            button6.Size = new Size(161, 41);
+            button6.TabIndex = 12;
+            button6.Text = "Siparişi Tamamla";
+            button6.UseVisualStyleBackColor = false;
             // 
             // button5
             // 
@@ -166,29 +190,31 @@
             button3.Text = "Sipariş Ekle";
             button3.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // btnReturn
             // 
-            button2.BackColor = Color.SteelBlue;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            button2.Location = new Point(3, 384);
-            button2.Name = "button2";
-            button2.Size = new Size(161, 41);
-            button2.TabIndex = 7;
-            button2.Text = "Önceki Sayfaya Dön";
-            button2.UseVisualStyleBackColor = false;
+            btnReturn.BackColor = Color.SteelBlue;
+            btnReturn.FlatStyle = FlatStyle.Flat;
+            btnReturn.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            btnReturn.Location = new Point(3, 384);
+            btnReturn.Name = "btnReturn";
+            btnReturn.Size = new Size(161, 41);
+            btnReturn.TabIndex = 7;
+            btnReturn.Text = "Önceki Sayfaya Dön";
+            btnReturn.UseVisualStyleBackColor = false;
+            btnReturn.Click += btnReturn_Click;
             // 
-            // button1
+            // btnLogout
             // 
-            button1.BackColor = Color.Firebrick;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            button1.Location = new Point(3, 431);
-            button1.Name = "button1";
-            button1.Size = new Size(161, 41);
-            button1.TabIndex = 6;
-            button1.Text = "Çıkış Yap";
-            button1.UseVisualStyleBackColor = false;
+            btnLogout.BackColor = Color.Firebrick;
+            btnLogout.FlatStyle = FlatStyle.Flat;
+            btnLogout.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            btnLogout.Location = new Point(3, 431);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(161, 41);
+            btnLogout.TabIndex = 6;
+            btnLogout.Text = "Çıkış Yap";
+            btnLogout.UseVisualStyleBackColor = false;
+            btnLogout.Click += btnLogout_Click;
             // 
             // label2
             // 
@@ -368,15 +394,11 @@
         private Panel panel2;
         private Label label1;
         private Label label2;
-        private Button button1;
-        private Button button2;
+        private Button btnLogout;
+        private Button btnReturn;
         private Button button5;
         private Button button4;
         private Button button3;
-        private Panel panel4;
-        private Label label4;
-        private Label label6;
-        private Label label5;
         private DataGridView dataGridView1;
         private Label label3;
         private CheckBox checkBox1;
@@ -389,5 +411,11 @@
         private Button btnLogin;
         private CheckBox checkBox5;
         private Button button6;
+        private Panel panel4;
+        private Label lblRole;
+        private Label lblUsername;
+        private Label label5;
+        private Label label4;
+        private Label label6;
     }
 }

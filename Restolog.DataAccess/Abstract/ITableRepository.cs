@@ -5,9 +5,9 @@ namespace Restolog.DataAccess.Abstract
     public interface ITableEntityRepository
     {
         List<TableEntity> GetAll();
-        TableEntity GetById(int id);
+        TableEntity GetById(Guid id);
         void Add(TableEntity tableEntity);
         void Update(TableEntity tableEntity);
-        void Delete(int id);
+        void Delete(Guid id);
     }
 }

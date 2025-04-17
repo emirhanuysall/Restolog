@@ -1,4 +1,5 @@
-﻿using Restolog.DataAccess.Abstract;
+﻿using Microsoft.EntityFrameworkCore;
+using Restolog.DataAccess.Abstract;
 using Restolog.Entities.Concrete;
 
 namespace Restolog.DataAccess.Concrete
@@ -12,9 +13,19 @@ namespace Restolog.DataAccess.Concrete
             _context = context;
         }
 
-        public List<Product> GetAll() => _context.Products.ToList();
+        public List<Product> GetAll()
+        {
+            return _context.Products
+                           .Include(p => p.Category) 
+                           .ToList();
+        }
 
-        public Product GetById(int id) => _context.Products.Find(id);
+        public Product GetById(int id)
+        {
+            return _context.Products
+                           .Include(p => p.Category)
+                           .FirstOrDefault(p => p.Id == id);
+        }
 
         public void Add(Product product)
         {
@@ -24,9 +35,17 @@ namespace Restolog.DataAccess.Concrete
 
         public void Update(Product product)
         {
-            _context.Products.Update(product);
-            _context.SaveChanges();
+            var existingProduct = _context.Products.Include(p => p.Category).FirstOrDefault(p => p.Id == product.Id);
+            if (existingProduct != null)
+            {
+                existingProduct.Name = product.Name;
+                existingProduct.Description = product.Description;
+                existingProduct.Price = product.Price;
+                existingProduct.CategoryId = product.CategoryId; 
+                _context.SaveChanges();
+            }
         }
+
 
         public void Delete(int id)
         {
