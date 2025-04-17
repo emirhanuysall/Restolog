@@ -14,7 +14,7 @@ namespace Restolog.DataAccess.Concrete
 
         public List<TableEntity> GetAll() => _context.Tables.ToList();
 
-        public TableEntity GetById(int id) => _context.Tables.Find(id);
+        public TableEntity GetById(Guid id) => _context.Tables.Find(id);
 
         public void Add(TableEntity tableEntity)
         {
@@ -28,7 +28,7 @@ namespace Restolog.DataAccess.Concrete
             _context.SaveChanges();
         }
 
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
             var tableEntity = _context.Tables.Find(id);
             if (tableEntity != null)

@@ -1,6 +1,6 @@
 ﻿namespace Restolog.UI
 {
-    partial class UserManagementForm
+    partial class TableManagementForm
     {
         /// <summary>
         /// Required designer variable.
@@ -33,11 +33,9 @@
             label7 = new Label();
             txtSearch = new TextBox();
             btnApply = new Button();
-            chkPassive = new CheckBox();
-            chkActive = new CheckBox();
             label3 = new Label();
             panel2 = new Panel();
-            dgvUsers = new DataGridView();
+            dgvTables = new DataGridView();
             panel1 = new Panel();
             panel4 = new Panel();
             lblRole = new Label();
@@ -53,7 +51,7 @@
             label2 = new Label();
             panel3.SuspendLayout();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvUsers).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvTables).BeginInit();
             panel1.SuspendLayout();
             panel4.SuspendLayout();
             SuspendLayout();
@@ -62,11 +60,11 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            label1.Location = new Point(8, 10);
+            label1.Location = new Point(19, 10);
             label1.Name = "label1";
-            label1.Size = new Size(181, 21);
-            label1.TabIndex = 9;
-            label1.Text = "Kullanıcı Yönetim Paneli";
+            label1.Size = new Size(159, 21);
+            label1.TabIndex = 13;
+            label1.Text = "Masa Yönetim Paneli";
             // 
             // panel3
             // 
@@ -74,22 +72,20 @@
             panel3.Controls.Add(label7);
             panel3.Controls.Add(txtSearch);
             panel3.Controls.Add(btnApply);
-            panel3.Controls.Add(chkPassive);
-            panel3.Controls.Add(chkActive);
             panel3.Controls.Add(label3);
-            panel3.Location = new Point(188, 34);
+            panel3.Location = new Point(190, 34);
             panel3.Name = "panel3";
             panel3.Size = new Size(834, 72);
-            panel3.TabIndex = 8;
+            panel3.TabIndex = 12;
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            label7.Location = new Point(121, 13);
+            label7.Location = new Point(3, 17);
             label7.Name = "label7";
             label7.Size = new Size(35, 21);
-            label7.TabIndex = 29;
+            label7.TabIndex = 32;
             label7.Text = "Ara";
             // 
             // txtSearch
@@ -97,44 +93,24 @@
             txtSearch.BackColor = SystemColors.ScrollBar;
             txtSearch.BorderStyle = BorderStyle.FixedSingle;
             txtSearch.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            txtSearch.Location = new Point(121, 39);
+            txtSearch.Location = new Point(3, 43);
             txtSearch.Multiline = true;
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(151, 23);
-            txtSearch.TabIndex = 28;
+            txtSearch.TabIndex = 31;
             // 
             // btnApply
             // 
             btnApply.BackColor = Color.Green;
             btnApply.FlatStyle = FlatStyle.Flat;
             btnApply.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            btnApply.Location = new Point(309, 39);
+            btnApply.Location = new Point(191, 43);
             btnApply.Name = "btnApply";
             btnApply.Size = new Size(71, 23);
-            btnApply.TabIndex = 27;
+            btnApply.TabIndex = 30;
             btnApply.Text = "Uygula";
             btnApply.UseVisualStyleBackColor = false;
             btnApply.Click += btnApply_Click;
-            // 
-            // chkPassive
-            // 
-            chkPassive.AutoSize = true;
-            chkPassive.Location = new Point(3, 46);
-            chkPassive.Name = "chkPassive";
-            chkPassive.Size = new Size(112, 19);
-            chkPassive.TabIndex = 26;
-            chkPassive.Text = "Pasif Kullanıcılar";
-            chkPassive.UseVisualStyleBackColor = true;
-            // 
-            // chkActive
-            // 
-            chkActive.AutoSize = true;
-            chkActive.Location = new Point(3, 21);
-            chkActive.Name = "chkActive";
-            chkActive.Size = new Size(112, 19);
-            chkActive.TabIndex = 25;
-            chkActive.Text = "Aktif Kullanıcılar";
-            chkActive.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -149,19 +125,19 @@
             // panel2
             // 
             panel2.BorderStyle = BorderStyle.FixedSingle;
-            panel2.Controls.Add(dgvUsers);
-            panel2.Location = new Point(188, 112);
+            panel2.Controls.Add(dgvTables);
+            panel2.Location = new Point(190, 112);
             panel2.Name = "panel2";
             panel2.Size = new Size(834, 399);
-            panel2.TabIndex = 7;
+            panel2.TabIndex = 11;
             // 
-            // dgvUsers
+            // dgvTables
             // 
-            dgvUsers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvUsers.Location = new Point(2, 3);
-            dgvUsers.Name = "dgvUsers";
-            dgvUsers.Size = new Size(827, 391);
-            dgvUsers.TabIndex = 0;
+            dgvTables.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvTables.Location = new Point(3, 3);
+            dgvTables.Name = "dgvTables";
+            dgvTables.Size = new Size(826, 391);
+            dgvTables.TabIndex = 0;
             // 
             // panel1
             // 
@@ -173,10 +149,10 @@
             panel1.Controls.Add(btnReturn);
             panel1.Controls.Add(btnLogout);
             panel1.Controls.Add(label2);
-            panel1.Location = new Point(13, 34);
+            panel1.Location = new Point(15, 34);
             panel1.Name = "panel1";
             panel1.Size = new Size(169, 477);
-            panel1.TabIndex = 6;
+            panel1.TabIndex = 10;
             // 
             // panel4
             // 
@@ -187,10 +163,10 @@
             panel4.Controls.Add(label6);
             panel4.Controls.Add(label5);
             panel4.Controls.Add(label4);
-            panel4.Location = new Point(3, 21);
+            panel4.Location = new Point(3, 20);
             panel4.Name = "panel4";
             panel4.Size = new Size(161, 58);
-            panel4.TabIndex = 12;
+            panel4.TabIndex = 15;
             // 
             // lblRole
             // 
@@ -247,11 +223,11 @@
             btnEdit.BackColor = Color.Peru;
             btnEdit.FlatStyle = FlatStyle.Flat;
             btnEdit.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            btnEdit.Location = new Point(3, 180);
+            btnEdit.Location = new Point(3, 178);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(161, 41);
-            btnEdit.TabIndex = 10;
-            btnEdit.Text = "Kullanıcı Düzenle";
+            btnEdit.TabIndex = 14;
+            btnEdit.Text = "Masa Düzenle";
             btnEdit.UseVisualStyleBackColor = false;
             btnEdit.Click += btnEdit_Click;
             // 
@@ -260,11 +236,11 @@
             btnDelete.BackColor = Color.Firebrick;
             btnDelete.FlatStyle = FlatStyle.Flat;
             btnDelete.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            btnDelete.Location = new Point(3, 133);
+            btnDelete.Location = new Point(3, 131);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(161, 41);
-            btnDelete.TabIndex = 9;
-            btnDelete.Text = "Kullanıcı Sil";
+            btnDelete.TabIndex = 13;
+            btnDelete.Text = "Masa Sil";
             btnDelete.UseVisualStyleBackColor = false;
             btnDelete.Click += btnDelete_Click;
             // 
@@ -273,11 +249,11 @@
             btnAdd.BackColor = Color.Green;
             btnAdd.FlatStyle = FlatStyle.Flat;
             btnAdd.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            btnAdd.Location = new Point(3, 86);
+            btnAdd.Location = new Point(3, 84);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(161, 41);
-            btnAdd.TabIndex = 8;
-            btnAdd.Text = "Kullanıcı Ekle";
+            btnAdd.TabIndex = 12;
+            btnAdd.Text = "Masa Ekle";
             btnAdd.UseVisualStyleBackColor = false;
             btnAdd.Click += btnAdd_Click;
             // 
@@ -317,7 +293,7 @@
             label2.TabIndex = 6;
             label2.Text = "İşlemler";
             // 
-            // UserManagementForm
+            // TableManagementForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -327,14 +303,13 @@
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
-            Name = "UserManagementForm";
-            Text = "Kullanıcı Yönetimi ";
-            Load += UserManagementForm_Load;
+            Name = "TableManagementForm";
+            Text = "Masa Yönetimi";
+            Load += TableManagementForm_Load;
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgvUsers).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvTables).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel4.ResumeLayout(false);
@@ -347,18 +322,16 @@
 
         private Label label1;
         private Panel panel3;
-        private CheckBox chkPassive;
-        private CheckBox chkActive;
         private Label label3;
         private Panel panel2;
-        private DataGridView dgvUsers;
         private Panel panel1;
-        private Button btnEdit;
-        private Button btnDelete;
-        private Button btnAdd;
         private Button btnReturn;
         private Button btnLogout;
         private Label label2;
+        private DataGridView dgvTables;
+        private Button btnEdit;
+        private Button btnDelete;
+        private Button btnAdd;
         private Label label7;
         private TextBox txtSearch;
         private Button btnApply;

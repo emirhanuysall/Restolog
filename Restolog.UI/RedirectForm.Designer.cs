@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RedirectForm));
-            button3 = new Button();
+            btnOrderManagement = new Button();
             label1 = new Label();
-            button2 = new Button();
-            button6 = new Button();
+            btnUserManagement = new Button();
+            btnDashboard = new Button();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
-            button1 = new Button();
+            btnMenuManagement = new Button();
             pictureBox3 = new PictureBox();
-            button4 = new Button();
+            btnTableManagement = new Button();
             pictureBox4 = new PictureBox();
             pictureBox5 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -47,18 +47,19 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             SuspendLayout();
             // 
-            // button3
+            // btnOrderManagement
             // 
-            button3.BackColor = Color.Green;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            button3.Location = new Point(114, 98);
-            button3.Name = "button3";
-            button3.Size = new Size(186, 151);
-            button3.TabIndex = 9;
-            button3.Text = "Sipariş Yönetimi";
-            button3.TextAlign = ContentAlignment.BottomCenter;
-            button3.UseVisualStyleBackColor = false;
+            btnOrderManagement.BackColor = Color.Green;
+            btnOrderManagement.FlatStyle = FlatStyle.Flat;
+            btnOrderManagement.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            btnOrderManagement.Location = new Point(114, 98);
+            btnOrderManagement.Name = "btnOrderManagement";
+            btnOrderManagement.Size = new Size(186, 151);
+            btnOrderManagement.TabIndex = 9;
+            btnOrderManagement.Text = "Sipariş Yönetimi";
+            btnOrderManagement.TextAlign = ContentAlignment.BottomCenter;
+            btnOrderManagement.UseVisualStyleBackColor = false;
+            btnOrderManagement.Click += btnOrderManagement_Click;
             // 
             // label1
             // 
@@ -70,31 +71,32 @@
             label1.TabIndex = 10;
             label1.Text = "RESTORAN İŞLEMLERİ";
             // 
-            // button2
+            // btnUserManagement
             // 
-            button2.BackColor = Color.SteelBlue;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            button2.Location = new Point(114, 255);
-            button2.Name = "button2";
-            button2.Size = new Size(186, 144);
-            button2.TabIndex = 12;
-            button2.Text = "Kullanıcı Yönetimi";
-            button2.TextAlign = ContentAlignment.BottomCenter;
-            button2.UseVisualStyleBackColor = false;
+            btnUserManagement.BackColor = Color.SteelBlue;
+            btnUserManagement.FlatStyle = FlatStyle.Flat;
+            btnUserManagement.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            btnUserManagement.Location = new Point(114, 255);
+            btnUserManagement.Name = "btnUserManagement";
+            btnUserManagement.Size = new Size(186, 144);
+            btnUserManagement.TabIndex = 12;
+            btnUserManagement.Text = "Kullanıcı Yönetimi";
+            btnUserManagement.TextAlign = ContentAlignment.BottomCenter;
+            btnUserManagement.UseVisualStyleBackColor = false;
+            btnUserManagement.Click += btnUserManagement_Click;
             // 
-            // button6
+            // btnDashboard
             // 
-            button6.BackColor = Color.Goldenrod;
-            button6.FlatStyle = FlatStyle.Flat;
-            button6.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            button6.Location = new Point(306, 255);
-            button6.Name = "button6";
-            button6.Size = new Size(378, 144);
-            button6.TabIndex = 15;
-            button6.Text = "DASHBOARD";
-            button6.TextAlign = ContentAlignment.MiddleRight;
-            button6.UseVisualStyleBackColor = false;
+            btnDashboard.BackColor = Color.Goldenrod;
+            btnDashboard.FlatStyle = FlatStyle.Flat;
+            btnDashboard.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            btnDashboard.Location = new Point(306, 255);
+            btnDashboard.Name = "btnDashboard";
+            btnDashboard.Size = new Size(378, 144);
+            btnDashboard.TabIndex = 15;
+            btnDashboard.Text = "DASHBOARD";
+            btnDashboard.TextAlign = ContentAlignment.MiddleRight;
+            btnDashboard.UseVisualStyleBackColor = false;
             // 
             // pictureBox1
             // 
@@ -106,6 +108,7 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 18;
             pictureBox1.TabStop = false;
+            pictureBox1.Click += btnOrderManagement_Click;
             // 
             // pictureBox2
             // 
@@ -117,19 +120,21 @@
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 20;
             pictureBox2.TabStop = false;
+            pictureBox2.Click += btnMenuManagement_Click;
             // 
-            // button1
+            // btnMenuManagement
             // 
-            button1.BackColor = Color.Peru;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            button1.Location = new Point(306, 98);
-            button1.Name = "button1";
-            button1.Size = new Size(186, 151);
-            button1.TabIndex = 19;
-            button1.Text = "Menü Yönetimi";
-            button1.TextAlign = ContentAlignment.BottomCenter;
-            button1.UseVisualStyleBackColor = false;
+            btnMenuManagement.BackColor = Color.Peru;
+            btnMenuManagement.FlatStyle = FlatStyle.Flat;
+            btnMenuManagement.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            btnMenuManagement.Location = new Point(306, 98);
+            btnMenuManagement.Name = "btnMenuManagement";
+            btnMenuManagement.Size = new Size(186, 151);
+            btnMenuManagement.TabIndex = 19;
+            btnMenuManagement.Text = "Menü Yönetimi";
+            btnMenuManagement.TextAlign = ContentAlignment.BottomCenter;
+            btnMenuManagement.UseVisualStyleBackColor = false;
+            btnMenuManagement.Click += btnMenuManagement_Click;
             // 
             // pictureBox3
             // 
@@ -141,19 +146,21 @@
             pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox3.TabIndex = 22;
             pictureBox3.TabStop = false;
+            pictureBox3.Click += btnTableManagement_Click;
             // 
-            // button4
+            // btnTableManagement
             // 
-            button4.BackColor = Color.DodgerBlue;
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            button4.Location = new Point(498, 98);
-            button4.Name = "button4";
-            button4.Size = new Size(186, 151);
-            button4.TabIndex = 21;
-            button4.Text = "Masa Yönetimi";
-            button4.TextAlign = ContentAlignment.BottomCenter;
-            button4.UseVisualStyleBackColor = false;
+            btnTableManagement.BackColor = Color.DodgerBlue;
+            btnTableManagement.FlatStyle = FlatStyle.Flat;
+            btnTableManagement.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            btnTableManagement.Location = new Point(498, 98);
+            btnTableManagement.Name = "btnTableManagement";
+            btnTableManagement.Size = new Size(186, 151);
+            btnTableManagement.TabIndex = 21;
+            btnTableManagement.Text = "Masa Yönetimi";
+            btnTableManagement.TextAlign = ContentAlignment.BottomCenter;
+            btnTableManagement.UseVisualStyleBackColor = false;
+            btnTableManagement.Click += btnTableManagement_Click;
             // 
             // pictureBox4
             // 
@@ -165,6 +172,7 @@
             pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox4.TabIndex = 23;
             pictureBox4.TabStop = false;
+            pictureBox4.Click += btnUserManagement_Click;
             // 
             // pictureBox5
             // 
@@ -186,14 +194,14 @@
             Controls.Add(pictureBox5);
             Controls.Add(pictureBox4);
             Controls.Add(pictureBox3);
-            Controls.Add(button4);
+            Controls.Add(btnTableManagement);
             Controls.Add(pictureBox2);
-            Controls.Add(button1);
+            Controls.Add(btnMenuManagement);
             Controls.Add(pictureBox1);
-            Controls.Add(button6);
-            Controls.Add(button2);
+            Controls.Add(btnDashboard);
+            Controls.Add(btnUserManagement);
             Controls.Add(label1);
-            Controls.Add(button3);
+            Controls.Add(btnOrderManagement);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             MinimizeBox = false;
@@ -210,15 +218,15 @@
 
         #endregion
 
-        private Button button3;
+        private Button btnOrderManagement;
         private Label label1;
-        private Button button2;
-        private Button button6;
+        private Button btnUserManagement;
+        private Button btnDashboard;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
-        private Button button1;
+        private Button btnMenuManagement;
         private PictureBox pictureBox3;
-        private Button button4;
+        private Button btnTableManagement;
         private PictureBox pictureBox4;
         private PictureBox pictureBox5;
     }

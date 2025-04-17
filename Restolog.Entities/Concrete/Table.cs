@@ -6,8 +6,8 @@ namespace Restolog.Entities.Concrete
     {
         public Guid Id { get; set; }
         public string Name { get; set; } = string.Empty;
-        public bool IsFull { get; set; }
-        public bool IsReserved { get; set; }
+        public bool IsFull { get; set; } = false;
+        public bool IsReserved { get; set; } = false;
         public DateTime CreatedAt { get; set; }
         public DateTime? ClosedAt { get; set; }  
     }
