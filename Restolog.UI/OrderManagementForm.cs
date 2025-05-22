@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using Restolog.Entities.Concrete;
 using Restolog.DataAccess;
 using System.Drawing.Drawing2D;
+using Microsoft.EntityFrameworkCore;
 
 namespace Restolog.UI
 {
@@ -14,7 +15,9 @@ namespace Restolog.UI
     {
         private readonly RestologContext _context;
         private Dictionary<Guid, Panel> _tablePanels;
-
+        private Order? CurrentOrder;
+        private List<OrderDetail?>? CurrentOrderDetails;
+        private int SelectedRowId = 0;
         public OrderManagementForm()
         {
             InitializeComponent();
@@ -24,6 +27,130 @@ namespace Restolog.UI
             this.StartPosition = FormStartPosition.CenterScreen;
             InitializeOrderStatusComboBox();
             LoadTables();
+        }
+
+        void AddOrderItem()
+        {
+
+        }
+
+        private void LoadProducts(string Category = "")
+        {
+            panelProduct.Controls.Clear();
+            LoadCategories();
+            var products = _context.Products.Where(p => p.Category.Name == Category);
+            foreach (var product in products)
+            {
+                var productPanel = new Panel
+                {
+                    Width = 160,
+                    Height = 120,
+                    BorderStyle = BorderStyle.FixedSingle,
+                    Tag = product.Id,
+                    BackColor = Color.LightBlue,
+                    Cursor = Cursors.Hand,
+                    Margin = new Padding(10)
+                };
+                var nameLabel = new Label
+                {
+                    Text = $"Ürün: {product.Name}",
+                    Location = new Point(10, 10),
+                    AutoSize = true,
+                    Font = new Font("Segoe UI", 10, FontStyle.Bold)
+                };
+                var priceLabel = new Label
+                {
+                    Text = $"Fiyat: {product.Price}",
+                    Location = new Point(10, 35),
+                    AutoSize = true,
+                    Font = new Font("Segoe UI", 9)
+                };
+                productPanel.Controls.Add(nameLabel);
+                productPanel.Controls.Add(priceLabel);
+                panelProduct.Controls.Add(productPanel);
+                productPanel.Tag = product;
+                productPanel.Click += (sender, e) =>
+                {
+                    var selectedProduct = (Product)((Panel)sender).Tag;
+
+                    var SearcProduct = CurrentOrderDetails?.Where(o => o.ProductId == selectedProduct.Id).FirstOrDefault();
+                    if (SearcProduct != null)
+                    {
+                        SearcProduct.Quantity += 1;
+                        SearcProduct.Subtotal = SearcProduct.Quantity * selectedProduct.Price;
+                        dgOrderItems.DataSource = null;
+                        dgOrderItems.DataSource = CurrentOrderDetails;
+                        dgOrderItems.Refresh();
+                        dgOrderItems.Invalidate();
+
+                    }
+                    else
+                    {
+
+                        var orderDetail = new OrderDetail
+                        {
+                            Id = CurrentOrderDetails.Count + 1,
+                            ProductName = selectedProduct.Name,
+                            ProductId = selectedProduct.Id,
+                            Quantity = 1,
+                            UnitPrice = selectedProduct.Price,
+                            Subtotal = selectedProduct.Price
+                        };
+                        CurrentOrderDetails.Add(orderDetail);
+                        dgOrderItems.DataSource = null;
+                        dgOrderItems.DataSource = CurrentOrderDetails;
+                        dgOrderItems.Refresh();
+                        dgOrderItems.Invalidate();
+                    }
+                    OrderCalculate();
+
+                };
+            }
+        }
+        void OrderCalculate()
+        {
+            try
+            {
+                decimal total = 0;
+                foreach (var item in CurrentOrderDetails)
+                {
+                    total += item.Subtotal;
+                }
+                lblTotal.Text = total.ToString();
+                CurrentOrder.TotalPrice = total;
+                _context.SaveChanges();
+
+            }
+            catch (Exception)
+            {
+
+                //throw;
+            }
+
+        }
+        private void LoadCategories()
+        {
+            panelProductCaregory.Controls.Clear();
+
+            var categories = _context.Categories.ToList();
+            foreach (var category in categories)
+            {
+                var btn = new Button()
+                {
+                    Size = new Size(150, 40),
+                    FlatStyle = FlatStyle.Flat,
+                    FlatAppearance = { BorderSize = 1, BorderColor = Color.DarkRed },
+                    Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                    Text = category.Name
+                };
+                btn.Click += Btn_Click;
+                panelProductCaregory.Controls.Add(btn);
+            }
+        }
+
+        private void Btn_Click(object sender, EventArgs e)
+        {
+            LoadProducts(((Button)sender).Text);
         }
 
         private void LoadTables()
@@ -92,7 +219,7 @@ namespace Restolog.UI
             {
                 Width = 16,
                 Height = 16,
-                BackColor = Color.Transparent, 
+                BackColor = Color.Transparent,
                 Location = new Point(panel.Width - 22, 6),
                 Anchor = AnchorStyles.Top | AnchorStyles.Right
             };
@@ -115,7 +242,34 @@ namespace Restolog.UI
 
             panel.Click += (sender, e) =>
             {
-                MessageBox.Show($"Masa: {table.Name}\nDurum: {table.Status}", "Masa Bilgisi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CurrentOrder = _context.Orders.Select(o => o).FirstOrDefault(o => o.TableId == table.Id && (o.OrderStatusId == 2 || o.OrderStatusId == 3));
+                if (CurrentOrder == null)
+                {
+                    CurrentOrder = new Order { UserId = CurrentUser.User.Id, TableId = table.Id, CreatedAt = DateTime.Now, TotalPrice = 0, IsPaid = false, OrderStatusId = 2 };
+                    _context.Orders.Add(CurrentOrder);
+                    table.Status = "Dolu";
+                    _context.Tables.Update(table);
+                    _context.SaveChanges();
+                }
+                else
+                {
+                    table.Status = "Dolu";
+                    _context.SaveChanges();
+                    CurrentOrderDetails = _context.OrderDetails.Where(o => o.OrderId == CurrentOrder.Id).ToList();
+
+                    for (int i = 0; i < CurrentOrderDetails.Count; i++)
+                    {
+                        CurrentOrderDetails[i].Id = i;
+                    }
+                    dgOrderItems.DataSource = null;
+                    dgOrderItems.DataSource = CurrentOrderDetails;
+                    OrderCalculate();
+
+                }
+                LoadProducts();
+                pnlTable.Visible = false;
+                PanelProductMenu.Visible = true;
+
             };
 
             panel.Controls.Add(nameLabel);
@@ -159,7 +313,12 @@ namespace Restolog.UI
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
-            this.Close();
+            CurrentOrder = null;
+                      dgOrderItems.DataSource = null;
+            dgOrderItems.Refresh();
+            dgOrderItems.Invalidate();
+            pnlTable.Visible = true;
+            PanelProductMenu.Visible = false;
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -263,6 +422,13 @@ namespace Restolog.UI
             }
 
             LoadTables();
+            pnlTable.Dock = DockStyle.Fill;
+            pnlTable.Visible = true;
+            pnlTable.BringToFront();
+            PanelProductMenu.Visible = false;
+            dgOrderItems.AutoGenerateColumns = false;
+            DataGridViewStyle.ApplyStyle(dgOrderItems, DataGridViewStyle.GridStyle.SleekBlue);
+
         }
 
         private void cmbOrderStatus_SelectedIndexChanged(object sender, EventArgs e)
@@ -278,6 +444,73 @@ namespace Restolog.UI
         private void cmbTableStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
             ApplyFilters();
+        }
+
+        private void PanelProductMenu_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+
+        }
+
+        private void btnOrderSave_Click(object sender, EventArgs e)
+        {
+             OrderCalculate();
+            if (CurrentOrder != null)
+            {
+                CurrentOrder.OrderStatusId = 3; // Sipariş tamamlandı
+
+
+
+                _context.Database.ExecuteSqlRaw("DELETE FROM OrderDetails WHERE OrderId = {0}", CurrentOrder.Id);
+
+
+
+                foreach (var item in CurrentOrderDetails)
+                {
+                    item.Id = 0;
+                    item.OrderId = CurrentOrder.Id;
+                    _context.OrderDetails.Add(item);
+
+                }
+
+
+                _context.Orders.Update(CurrentOrder);
+                _context.SaveChanges();
+
+                CurrentOrder = null;
+                CurrentOrderDetails.Clear();
+                dgOrderItems.DataSource = null;
+                dgOrderItems.Refresh();
+                dgOrderItems.Invalidate();
+                pnlTable.Visible = true;
+                PanelProductMenu.Visible = false;
+            }
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            for (int i = 0; i < CurrentOrderDetails.Count; i++)
+            {
+                if (CurrentOrderDetails[i].Id == SelectedRowId)
+                {
+                    CurrentOrderDetails.Remove(CurrentOrderDetails[i]);
+                    break;
+                }
+
+            }
+            for (int i = 0; i < CurrentOrderDetails.Count; i++)
+            {
+                CurrentOrderDetails[i].Id = i;
+            }
+
+            dgOrderItems.DataSource = null;
+            dgOrderItems.DataSource = CurrentOrderDetails;
+        }
+
+        private void dgOrderItems_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            SelectedRowId = (int)dgOrderItems.Rows[e.RowIndex].Cells["ItemId"].Value;
         }
     }
 }
