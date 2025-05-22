@@ -25,7 +25,7 @@ namespace Restolog.DataAccess.Concrete
 
         public void Add(User user)
         {
-            _context.Entry(user).Reference(u => u.UserRole).IsModified = false;
+            _context.Entry(user).Reference(u => u.UserRole).CurrentValue = null;
             _context.Users.Add(user);
             _context.SaveChanges();
         }

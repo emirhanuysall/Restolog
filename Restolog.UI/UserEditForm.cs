@@ -11,28 +11,33 @@ namespace Restolog.UI
     public partial class UserEditForm : Form
     {
         private readonly EfUserRepository _userRepository;
+        private readonly EfUserRoleRepository _roleRepository;
+
         private User _currentUser;
 
         public UserEditForm(User user = null)
         {
+            this.StartPosition = FormStartPosition.CenterScreen;
+
             InitializeComponent();
             _userRepository = new EfUserRepository(new RestologContext());
+            _roleRepository = new EfUserRoleRepository(new RestologContext());
             _currentUser = user;
         }
 
         private void UserEditForm_Load(object sender, EventArgs e)
         {
-            // Roller combobox'ı yükle
-            cmbRole.Items.Add("Yönetici");
-            cmbRole.Items.Add("Personel");
-            cmbRole.SelectedIndex = 0; // Varsayılan "Yönetici"
+            var roles = _roleRepository.GetAll();
+            cmbRole.DataSource = roles;
+            cmbRole.DisplayMember = "Name";
+            cmbRole.ValueMember = "Id";
 
             if (_currentUser != null)
             {
                 txtName.Text = _currentUser.Name;
-                cmbRole.SelectedItem = _currentUser.UserRole?.Name;
+                cmbRole.SelectedValue = _currentUser.UserRoleId;
                 chkIsActive.Checked = _currentUser.IsActive;
-                txtPassword.Text = ""; // Şifreyi boş bırak
+                txtPassword.Text = ""; 
             }
         }
 
@@ -40,35 +45,33 @@ namespace Restolog.UI
         {
             // Kullanıcı bilgilerini al
             var name = txtName.Text;
-            var role = cmbRole.SelectedItem.ToString();
+            var roleId = (int)cmbRole.SelectedValue;
             var isActive = chkIsActive.Checked;
             var password = txtPassword.Text;
 
-            // Yeni kullanıcı veya mevcut kullanıcıyı güncelle
             if (_currentUser == null)
             {
                 var newUser = new User
                 {
+                    Id = Guid.NewGuid(),
                     Name = name,
-                    UserRole = new UserRole { Name = role },
+                    UserRoleId = roleId,
                     IsActive = isActive,
-                    Password = password // Şifreyi buradan alabiliriz
+                    Password = password
                 };
 
                 _userRepository.Add(newUser);
             }
             else
             {
-                // Mevcut kullanıcıyı güncelle
                 _currentUser.Name = name;
-                _currentUser.UserRole = new UserRole { Name = role };
+                _currentUser.UserRoleId = roleId;
                 _currentUser.IsActive = isActive;
                 _currentUser.Password = password;
 
                 _userRepository.Update(_currentUser);
             }
 
-            // Değişiklikleri kaydet ve formu kapat
             DialogResult = DialogResult.OK;
             Close();
         }

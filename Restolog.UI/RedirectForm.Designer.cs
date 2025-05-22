@@ -38,13 +38,14 @@
             btnMenuManagement = new Button();
             pictureBox3 = new PictureBox();
             btnTableManagement = new Button();
-            pictureBox4 = new PictureBox();
-            pictureBox5 = new PictureBox();
+            pcboxUser = new PictureBox();
+            pcboxDashboard = new PictureBox();
+            btnLogout = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcboxUser).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pcboxDashboard).BeginInit();
             SuspendLayout();
             // 
             // btnOrderManagement
@@ -162,28 +163,41 @@
             btnTableManagement.UseVisualStyleBackColor = false;
             btnTableManagement.Click += btnTableManagement_Click;
             // 
-            // pictureBox4
+            // pcboxUser
             // 
-            pictureBox4.BackColor = Color.SteelBlue;
-            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(127, 267);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(162, 110);
-            pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox4.TabIndex = 23;
-            pictureBox4.TabStop = false;
-            pictureBox4.Click += btnUserManagement_Click;
+            pcboxUser.BackColor = Color.SteelBlue;
+            pcboxUser.Image = (Image)resources.GetObject("pcboxUser.Image");
+            pcboxUser.Location = new Point(127, 267);
+            pcboxUser.Name = "pcboxUser";
+            pcboxUser.Size = new Size(162, 110);
+            pcboxUser.SizeMode = PictureBoxSizeMode.Zoom;
+            pcboxUser.TabIndex = 23;
+            pcboxUser.TabStop = false;
+            pcboxUser.Click += btnUserManagement_Click;
             // 
-            // pictureBox5
+            // pcboxDashboard
             // 
-            pictureBox5.BackColor = Color.Goldenrod;
-            pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
-            pictureBox5.Location = new Point(319, 267);
-            pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(270, 119);
-            pictureBox5.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox5.TabIndex = 24;
-            pictureBox5.TabStop = false;
+            pcboxDashboard.BackColor = Color.Goldenrod;
+            pcboxDashboard.Image = (Image)resources.GetObject("pcboxDashboard.Image");
+            pcboxDashboard.Location = new Point(319, 267);
+            pcboxDashboard.Name = "pcboxDashboard";
+            pcboxDashboard.Size = new Size(270, 119);
+            pcboxDashboard.SizeMode = PictureBoxSizeMode.Zoom;
+            pcboxDashboard.TabIndex = 24;
+            pcboxDashboard.TabStop = false;
+            // 
+            // btnLogout
+            // 
+            btnLogout.BackColor = Color.Firebrick;
+            btnLogout.FlatStyle = FlatStyle.Flat;
+            btnLogout.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            btnLogout.Location = new Point(12, 407);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(84, 31);
+            btnLogout.TabIndex = 25;
+            btnLogout.Text = "Çıkış Yap";
+            btnLogout.UseVisualStyleBackColor = false;
+            btnLogout.Click += btnLogout_Click;
             // 
             // RedirectForm
             // 
@@ -191,8 +205,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightSteelBlue;
             ClientSize = new Size(800, 450);
-            Controls.Add(pictureBox5);
-            Controls.Add(pictureBox4);
+            Controls.Add(btnLogout);
+            Controls.Add(pcboxDashboard);
+            Controls.Add(pcboxUser);
             Controls.Add(pictureBox3);
             Controls.Add(btnTableManagement);
             Controls.Add(pictureBox2);
@@ -207,11 +222,12 @@
             MinimizeBox = false;
             Name = "RedirectForm";
             Text = "Yönlendirme Sayfası";
+            Load += RedirectForm_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcboxUser).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pcboxDashboard).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -227,7 +243,8 @@
         private Button btnMenuManagement;
         private PictureBox pictureBox3;
         private Button btnTableManagement;
-        private PictureBox pictureBox4;
-        private PictureBox pictureBox5;
+        private PictureBox pcboxUser;
+        private PictureBox pcboxDashboard;
+        private Button btnLogout;
     }
 }

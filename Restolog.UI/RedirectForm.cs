@@ -29,7 +29,17 @@ namespace Restolog.UI
 
             btnUserManagement.Visible = isAdmin;
             btnDashboard.Visible = isAdmin;
+            pcboxUser.Visible = isAdmin;
+            pcboxDashboard.Visible = isAdmin;
+
+
         }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
         private void btnOrderManagement_Click(object sender, EventArgs e)
         {
             var form = new OrderManagementForm();
