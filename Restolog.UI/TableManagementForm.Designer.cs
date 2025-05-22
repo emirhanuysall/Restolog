@@ -49,6 +49,8 @@
             btnReturn = new Button();
             btnLogout = new Button();
             label2 = new Label();
+            label9 = new Label();
+            cmbTableStatus = new ComboBox();
             panel3.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvTables).BeginInit();
@@ -69,6 +71,8 @@
             // panel3
             // 
             panel3.BorderStyle = BorderStyle.FixedSingle;
+            panel3.Controls.Add(label9);
+            panel3.Controls.Add(cmbTableStatus);
             panel3.Controls.Add(label7);
             panel3.Controls.Add(txtSearch);
             panel3.Controls.Add(btnApply);
@@ -82,7 +86,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            label7.Location = new Point(3, 17);
+            label7.Location = new Point(185, 21);
             label7.Name = "label7";
             label7.Size = new Size(35, 21);
             label7.TabIndex = 32;
@@ -93,7 +97,7 @@
             txtSearch.BackColor = SystemColors.ScrollBar;
             txtSearch.BorderStyle = BorderStyle.FixedSingle;
             txtSearch.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            txtSearch.Location = new Point(3, 43);
+            txtSearch.Location = new Point(185, 44);
             txtSearch.Multiline = true;
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(151, 23);
@@ -104,7 +108,7 @@
             btnApply.BackColor = Color.Green;
             btnApply.FlatStyle = FlatStyle.Flat;
             btnApply.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            btnApply.Location = new Point(191, 43);
+            btnApply.Location = new Point(373, 44);
             btnApply.Name = "btnApply";
             btnApply.Size = new Size(71, 23);
             btnApply.TabIndex = 30;
@@ -293,6 +297,25 @@
             label2.TabIndex = 6;
             label2.Text = "İşlemler";
             // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            label9.Location = new Point(6, 27);
+            label9.Name = "label9";
+            label9.RightToLeft = RightToLeft.Yes;
+            label9.Size = new Size(79, 13);
+            label9.TabIndex = 38;
+            label9.Text = "Masa Durumu";
+            // 
+            // cmbTableStatus
+            // 
+            cmbTableStatus.FormattingEnabled = true;
+            cmbTableStatus.Location = new Point(6, 43);
+            cmbTableStatus.Name = "cmbTableStatus";
+            cmbTableStatus.Size = new Size(121, 23);
+            cmbTableStatus.TabIndex = 37;
+            // 
             // TableManagementForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -341,5 +364,7 @@
         private Label label6;
         private Label label5;
         private Label label4;
+        private Label label9;
+        private ComboBox cmbTableStatus;
     }
 }

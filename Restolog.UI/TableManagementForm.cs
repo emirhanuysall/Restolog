@@ -1,4 +1,5 @@
-﻿using Restolog.DataAccess;
+﻿using Microsoft.EntityFrameworkCore;
+using Restolog.DataAccess;
 using Restolog.DataAccess.Concrete;
 using Restolog.Entities.Concrete;
 using System;
@@ -15,6 +16,24 @@ namespace Restolog.UI
             this.StartPosition = FormStartPosition.CenterScreen;
 
             InitializeComponent();
+        }
+
+
+        private void InitializetTableStatusComboBox()
+        {
+            cmbTableStatus.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbTableStatus.Items.Add("Tümü");
+            cmbTableStatus.Items.Add("Boş");
+            cmbTableStatus.Items.Add("Dolu");
+            cmbTableStatus.Items.Add("Rezerve");
+            cmbTableStatus.SelectedIndex = 0;
+
+            cmbTableStatus.SelectedIndexChanged += CmbTableStatus_SelectedIndexChanged;
+        }
+
+        private void CmbTableStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadTables();
         }
 
         private void LoadTables()
@@ -36,28 +55,34 @@ namespace Restolog.UI
                 tables = tables.Where(t => t.Name.ToLower().Contains(search)).ToList();
             }
 
+            // Durum filtresi
+            string selectedStatus = cmbTableStatus.SelectedItem.ToString();
+            if (selectedStatus != "Tümü")
+            {
+                tables = tables.Where(t => t.Status == selectedStatus).ToList();
+            }
+
             dgvTables.DataSource = tables.Select(t => new
             {
                 t.Id,
                 t.Name,
                 CreatedAt = t.CreatedAt.ToString("g"),
-                Durum = t.IsFull ? (t.IsReserved ? "Dolu - Rezerve" : "Dolu") : "Boş"
+                Durum = t.Status
             }).ToList();
 
-            InitializeDataGridView(); // Load işlemi sonrası stil uygula
+            InitializeDataGridView(); 
         }
 
 
         private void TableManagementForm_Load(object sender, EventArgs e)
         {
-
-
             if (CurrentUser.User != null)
             {
                 lblUsername.Text = CurrentUser.User.Name;
                 lblRole.Text = CurrentUser.User.UserRole?.Name ?? "Rol Yok";
             }
 
+            InitializetTableStatusComboBox();
             LoadTables();
             InitializeDataGridView();
         }
@@ -109,24 +134,22 @@ namespace Restolog.UI
 
         private void InitializeDataGridView()
         {
-            // DataGridView stilini güncelle
+            // DataGridView stili
             dgvTables.EnableHeadersVisualStyles = false;
             dgvTables.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(34, 36, 49);
             dgvTables.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White;
             dgvTables.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             dgvTables.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            // Satır stilini güncelle
+            // Satır stili
             dgvTables.RowsDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(40, 42, 54);
             dgvTables.RowsDefaultCellStyle.ForeColor = System.Drawing.Color.White;
             dgvTables.RowsDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9F);
             dgvTables.RowsDefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(75, 75, 75);
             dgvTables.RowsDefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
-
-            // Alternatif satır renkleri
             dgvTables.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(50, 52, 63);
 
-            // Kenarlıkları daha ince yap
+           
             dgvTables.CellBorderStyle = DataGridViewCellBorderStyle.Single;
             dgvTables.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(50, 60, 70);
             dgvTables.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
@@ -138,6 +161,27 @@ namespace Restolog.UI
                 column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
 
+            // Durum sütunu için renklendirme
+            dgvTables.CellFormatting += (sender, e) =>
+            {
+                if (e.ColumnIndex == dgvTables.Columns["Durum"].Index && e.Value != null)
+                {
+                    var status = e.Value.ToString();
+                    switch (status)
+                    {
+                        case "Dolu":
+                            e.CellStyle.BackColor = System.Drawing.Color.Red;
+                            break;
+                        case "Boş":
+                            e.CellStyle.BackColor = System.Drawing.Color.Green;
+                            break;
+                        case "Rezerve":
+                            e.CellStyle.BackColor = System.Drawing.Color.Orange;
+                            break;
+                    }
+                }
+            };
+
             // Genişlik ayarları
             dgvTables.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvTables.RowTemplate.Height = 40;
@@ -145,6 +189,8 @@ namespace Restolog.UI
             // Tablonun genel arka plan rengini değiştirme
             dgvTables.BackgroundColor = System.Drawing.Color.FromArgb(48, 50, 61);
         }
+
+
         private void btnApply_Click(object sender, EventArgs e)
         {
             LoadTables();

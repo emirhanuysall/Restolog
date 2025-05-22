@@ -31,6 +31,8 @@
             btnSave = new Button();
             txtName = new TextBox();
             label1 = new Label();
+            cmbStatus = new ComboBox();
+            label2 = new Label();
             SuspendLayout();
             // 
             // btnSave
@@ -62,12 +64,31 @@
             label1.TabIndex = 9;
             label1.Text = "Masa Adı";
             // 
+            // cmbStatus
+            // 
+            cmbStatus.FormattingEnabled = true;
+            cmbStatus.Location = new Point(30, 101);
+            cmbStatus.Name = "cmbStatus";
+            cmbStatus.Size = new Size(121, 23);
+            cmbStatus.TabIndex = 16;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(30, 83);
+            label2.Name = "label2";
+            label2.Size = new Size(44, 15);
+            label2.TabIndex = 17;
+            label2.Text = "Durum";
+            // 
             // TableEditForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightSteelBlue;
             ClientSize = new Size(320, 297);
+            Controls.Add(label2);
+            Controls.Add(cmbStatus);
             Controls.Add(btnSave);
             Controls.Add(txtName);
             Controls.Add(label1);
@@ -82,5 +103,7 @@
         private Button btnSave;
         private TextBox txtName;
         private Label label1;
+        private ComboBox cmbStatus;
+        private Label label2;
     }
 }

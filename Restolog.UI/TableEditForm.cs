@@ -13,15 +13,21 @@ namespace Restolog.UI
         public TableEditForm()
         {
             this.StartPosition = FormStartPosition.CenterScreen;
-
-
             InitializeComponent();
+            InitializeStatusComboBox();
+        }
+
+        private void InitializeStatusComboBox()
+        {
+            cmbStatus.Items.AddRange(new string[] { "Boş", "Dolu", "Rezerve" });
+            cmbStatus.SelectedIndex = 0;
         }
 
         public TableEditForm(TableEntity table) : this()
         {
             _table = table;
             txtName.Text = _table.Name;
+            cmbStatus.SelectedItem = _table.Status;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -41,6 +47,7 @@ namespace Restolog.UI
                 {
                     Id = Guid.NewGuid(),
                     Name = name,
+                    Status = cmbStatus.SelectedItem.ToString(),
                     CreatedAt = DateTime.Now
                 };
                 repo.Add(_table);
@@ -48,6 +55,7 @@ namespace Restolog.UI
             else
             {
                 _table.Name = name;
+                _table.Status = cmbStatus.SelectedItem.ToString();
                 repo.Update(_table);
             }
 

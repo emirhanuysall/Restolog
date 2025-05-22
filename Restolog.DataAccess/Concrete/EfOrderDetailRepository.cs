@@ -16,6 +16,11 @@ namespace Restolog.DataAccess.Concrete
 
         public OrderDetail GetById(int id) => _context.OrderDetails.Find(id);
 
+        public List<OrderDetail> GetByOrderId(Guid orderId)
+        {
+            return _context.OrderDetails.Where(od => od.OrderId == orderId).ToList();
+        }
+
         public void Add(OrderDetail orderDetail)
         {
             _context.OrderDetails.Add(orderDetail);

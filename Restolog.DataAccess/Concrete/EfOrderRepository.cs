@@ -16,6 +16,12 @@ namespace Restolog.DataAccess.Concrete
 
         public Order GetById(int id) => _context.Orders.Find(id);
 
+        // Yeni metot: Aktif siparişi al
+        public Order GetActiveOrderByTableId(Guid tableId)
+        {
+            return _context.Orders.FirstOrDefault(o => o.TableId == tableId && !o.IsPaid);
+        }
+
         public void Add(Order order)
         {
             _context.Orders.Add(order);
@@ -38,4 +44,5 @@ namespace Restolog.DataAccess.Concrete
             }
         }
     }
+
 }

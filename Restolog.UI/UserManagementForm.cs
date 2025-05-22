@@ -57,7 +57,7 @@ namespace Restolog.UI
                 Status = u.IsActive ? "Active" : "Passive"
             }).ToList();
 
-            InitializeDataGridView(); // Stil uygulama
+            InitializeDataGridView(); 
         }
 
 
@@ -171,12 +171,12 @@ namespace Restolog.UI
 
                     if (status == "Active")
                     {
-                        statusCell.Style.BackColor = Color.Green; // Yeşil
+                        statusCell.Style.BackColor = Color.Green; 
                         statusCell.Style.ForeColor = Color.White;
                     }
                     else if (status == "Passive")
                     {
-                        statusCell.Style.BackColor = Color.Red; // Kırmızı
+                        statusCell.Style.BackColor = Color.Red; 
                         statusCell.Style.ForeColor = Color.White;
                     }
                 }

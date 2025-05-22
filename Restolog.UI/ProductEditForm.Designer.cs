@@ -85,6 +85,7 @@
             // nudPrice
             // 
             nudPrice.Location = new Point(172, 39);
+            nudPrice.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
             nudPrice.Name = "nudPrice";
             nudPrice.Size = new Size(120, 23);
             nudPrice.TabIndex = 5;

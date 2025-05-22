@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Restolog.DataAccess;
 
@@ -11,9 +12,11 @@ using Restolog.DataAccess;
 namespace Restolog.DataAccess.Migrations
 {
     [DbContext(typeof(RestologContext))]
-    partial class RestologContextModelSnapshot : ModelSnapshot
+    [Migration("20250429065221_TableEntityUpdate")]
+    partial class TableEntityUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -147,8 +150,8 @@ namespace Restolog.DataAccess.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("Quantity")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("Subtotal")
                         .HasColumnType("decimal(18,2)");
@@ -170,7 +173,7 @@ namespace Restolog.DataAccess.Migrations
                             Id = 1,
                             OrderId = new Guid("44444444-4444-4444-4444-444444444444"),
                             ProductId = 1,
-                            Quantity = 2m,
+                            Quantity = 2,
                             Subtotal = 50m,
                             UnitPrice = 25m
                         },
@@ -179,7 +182,7 @@ namespace Restolog.DataAccess.Migrations
                             Id = 2,
                             OrderId = new Guid("44444444-4444-4444-4444-444444444444"),
                             ProductId = 2,
-                            Quantity = 1m,
+                            Quantity = 1,
                             Subtotal = 70m,
                             UnitPrice = 70m
                         });
