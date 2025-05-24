@@ -12,5 +12,6 @@ namespace Restolog.Entities.Concrete
         public decimal Quantity { get; set; }
         public decimal UnitPrice { get; set; }
         public decimal Subtotal  { get; set; }
+        public int ItemNo { get; set; }
     }
 }

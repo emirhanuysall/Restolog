@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Restolog.DataAccess;
 
@@ -11,9 +12,11 @@ using Restolog.DataAccess;
 namespace Restolog.DataAccess.Migrations
 {
     [DbContext(typeof(RestologContext))]
-    partial class RestologContextModelSnapshot : ModelSnapshot
+    [Migration("20250524095322_ItemNoAdded")]
+    partial class ItemNoAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,46 +51,6 @@ namespace Restolog.DataAccess.Migrations
                         {
                             Id = 2,
                             Name = "Yemekler"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Tatlılar"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Çorbalar"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Name = "Salatalar"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Name = "Sandviçler"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Name = "Makarnalar"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Name = "Kahvaltılıklar"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Name = "Pizza"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Name = "Sıcak İçecekler"
                         });
                 });
 
@@ -145,7 +108,6 @@ namespace Restolog.DataAccess.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("TotalPrice")
-                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<Guid>("UserId")
@@ -164,53 +126,13 @@ namespace Restolog.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("88888888-8888-8888-8888-888888888888"),
-                            CreatedAt = new DateTime(2025, 5, 24, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = new Guid("44444444-4444-4444-4444-444444444444"),
+                            CreatedAt = new DateTime(2025, 1, 1, 12, 0, 0, 0, DateTimeKind.Unspecified),
                             IsPaid = false,
-                            OrderStatusId = 2,
-                            TableId = new Guid("55555555-5555-5555-5555-555555555555"),
-                            TotalPrice = 100m,
-                            UserId = new Guid("22222222-2222-2222-2222-222222222222")
-                        },
-                        new
-                        {
-                            Id = new Guid("99999999-9999-9999-9999-999999999999"),
-                            CreatedAt = new DateTime(2025, 5, 22, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsPaid = true,
-                            OrderStatusId = 1001,
-                            TableId = new Guid("66666666-6666-6666-6666-666666666666"),
-                            TotalPrice = 40m,
-                            UserId = new Guid("22222222-2222-2222-2222-222222222222")
-                        },
-                        new
-                        {
-                            Id = new Guid("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"),
-                            CreatedAt = new DateTime(2025, 5, 9, 14, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsPaid = false,
-                            OrderStatusId = 3,
-                            TableId = new Guid("44444444-4444-4444-4444-444444444444"),
-                            TotalPrice = 120m,
-                            UserId = new Guid("33333333-3333-3333-3333-333333333333")
-                        },
-                        new
-                        {
-                            Id = new Guid("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"),
-                            CreatedAt = new DateTime(2025, 2, 15, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsPaid = true,
-                            OrderStatusId = 1001,
-                            TableId = new Guid("77777777-7777-7777-7777-777777777777"),
-                            TotalPrice = 180m,
+                            OrderStatusId = 1,
+                            TableId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            TotalPrice = 140m,
                             UserId = new Guid("11111111-1111-1111-1111-111111111111")
-                        },
-                        new
-                        {
-                            Id = new Guid("cccccccc-cccc-cccc-cccc-cccccccccccc"),
-                            CreatedAt = new DateTime(2024, 11, 10, 19, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsPaid = true,
-                            OrderStatusId = 1001,
-                            TableId = new Guid("44444444-4444-4444-4444-444444444444"),
-                            TotalPrice = 210m,
-                            UserId = new Guid("22222222-2222-2222-2222-222222222222")
                         });
                 });
 
@@ -235,15 +157,12 @@ namespace Restolog.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Quantity")
-                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("Subtotal")
-                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("UnitPrice")
-                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
@@ -258,8 +177,8 @@ namespace Restolog.DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            ItemNo = 1,
-                            OrderId = new Guid("88888888-8888-8888-8888-888888888888"),
+                            ItemNo = 0,
+                            OrderId = new Guid("44444444-4444-4444-4444-444444444444"),
                             ProductId = 1,
                             Quantity = 2m,
                             Subtotal = 50m,
@@ -268,92 +187,12 @@ namespace Restolog.DataAccess.Migrations
                         new
                         {
                             Id = 2,
-                            ItemNo = 2,
-                            OrderId = new Guid("88888888-8888-8888-8888-888888888888"),
-                            ProductId = 4,
-                            Quantity = 1m,
-                            Subtotal = 30m,
-                            UnitPrice = 30m
-                        },
-                        new
-                        {
-                            Id = 3,
-                            ItemNo = 3,
-                            OrderId = new Guid("88888888-8888-8888-8888-888888888888"),
+                            ItemNo = 0,
+                            OrderId = new Guid("44444444-4444-4444-4444-444444444444"),
                             ProductId = 2,
                             Quantity = 1m,
-                            Subtotal = 15m,
-                            UnitPrice = 15m
-                        },
-                        new
-                        {
-                            Id = 4,
-                            ItemNo = 1,
-                            OrderId = new Guid("99999999-9999-9999-9999-999999999999"),
-                            ProductId = 5,
-                            Quantity = 1m,
-                            Subtotal = 40m,
-                            UnitPrice = 40m
-                        },
-                        new
-                        {
-                            Id = 5,
-                            ItemNo = 1,
-                            OrderId = new Guid("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"),
-                            ProductId = 13,
-                            Quantity = 2m,
-                            Subtotal = 110m,
-                            UnitPrice = 55m
-                        },
-                        new
-                        {
-                            Id = 6,
-                            ItemNo = 2,
-                            OrderId = new Guid("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"),
-                            ProductId = 9,
-                            Quantity = 1m,
-                            Subtotal = 32m,
-                            UnitPrice = 32m
-                        },
-                        new
-                        {
-                            Id = 7,
-                            ItemNo = 1,
-                            OrderId = new Guid("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"),
-                            ProductId = 15,
-                            Quantity = 1m,
-                            Subtotal = 120m,
-                            UnitPrice = 120m
-                        },
-                        new
-                        {
-                            Id = 8,
-                            ItemNo = 2,
-                            OrderId = new Guid("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"),
-                            ProductId = 6,
-                            Quantity = 2m,
                             Subtotal = 70m,
-                            UnitPrice = 35m
-                        },
-                        new
-                        {
-                            Id = 9,
-                            ItemNo = 1,
-                            OrderId = new Guid("cccccccc-cccc-cccc-cccc-cccccccccccc"),
-                            ProductId = 17,
-                            Quantity = 2m,
-                            Subtotal = 160m,
-                            UnitPrice = 80m
-                        },
-                        new
-                        {
-                            Id = 10,
-                            ItemNo = 2,
-                            OrderId = new Guid("cccccccc-cccc-cccc-cccc-cccccccccccc"),
-                            ProductId = 19,
-                            Quantity = 5m,
-                            Subtotal = 50m,
-                            UnitPrice = 10m
+                            UnitPrice = 70m
                         });
                 });
 
@@ -377,27 +216,17 @@ namespace Restolog.DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            StatusName = "Yeni"
-                        },
-                        new
-                        {
-                            Id = 2,
                             StatusName = "Hazırlanıyor"
                         },
                         new
                         {
+                            Id = 2,
+                            StatusName = "Hazır"
+                        },
+                        new
+                        {
                             Id = 3,
-                            StatusName = "Serviste"
-                        },
-                        new
-                        {
-                            Id = 1001,
-                            StatusName = "Ödendi"
-                        },
-                        new
-                        {
-                            Id = 1002,
-                            StatusName = "İptal"
+                            StatusName = "Teslim Edildi"
                         });
                 });
 
@@ -408,7 +237,6 @@ namespace Restolog.DataAccess.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("AmountPaid")
-                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<Guid>("OrderId")
@@ -435,7 +263,6 @@ namespace Restolog.DataAccess.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("AmountPaid")
-                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("OrderDetailId")
@@ -473,7 +300,6 @@ namespace Restolog.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
-                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
@@ -494,154 +320,10 @@ namespace Restolog.DataAccess.Migrations
                         new
                         {
                             Id = 2,
-                            CategoryId = 1,
-                            Description = "Serinletici içecek",
-                            Name = "Ayran",
-                            Price = 15m
-                        },
-                        new
-                        {
-                            Id = 3,
                             CategoryId = 2,
                             Description = "Etli burger",
                             Name = "Hamburger",
                             Price = 70m
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CategoryId = 2,
-                            Description = "Kızarmış patates",
-                            Name = "Patates Kızartması",
-                            Price = 30m
-                        },
-                        new
-                        {
-                            Id = 5,
-                            CategoryId = 3,
-                            Description = "Tatlı",
-                            Name = "Baklava",
-                            Price = 40m
-                        },
-                        new
-                        {
-                            Id = 6,
-                            CategoryId = 3,
-                            Description = "Fırın sütlaç",
-                            Name = "Sütlaç",
-                            Price = 35m
-                        },
-                        new
-                        {
-                            Id = 7,
-                            CategoryId = 4,
-                            Description = "Sıcak çorba",
-                            Name = "Mercimek Çorbası",
-                            Price = 28m
-                        },
-                        new
-                        {
-                            Id = 8,
-                            CategoryId = 4,
-                            Description = "Baharatlı çorba",
-                            Name = "Ezogelin Çorbası",
-                            Price = 30m
-                        },
-                        new
-                        {
-                            Id = 9,
-                            CategoryId = 5,
-                            Description = "Taze salata",
-                            Name = "Çoban Salata",
-                            Price = 32m
-                        },
-                        new
-                        {
-                            Id = 10,
-                            CategoryId = 5,
-                            Description = "Mevsim yeşillikleri",
-                            Name = "Mevsim Salata",
-                            Price = 34m
-                        },
-                        new
-                        {
-                            Id = 11,
-                            CategoryId = 6,
-                            Description = "Izgara tavuklu sandviç",
-                            Name = "Tavuklu Sandviç",
-                            Price = 45m
-                        },
-                        new
-                        {
-                            Id = 12,
-                            CategoryId = 6,
-                            Description = "Ton balıklı sandviç",
-                            Name = "Ton Balıklı Sandviç",
-                            Price = 48m
-                        },
-                        new
-                        {
-                            Id = 13,
-                            CategoryId = 7,
-                            Description = "Kıymalı makarna",
-                            Name = "Spagetti Bolonez",
-                            Price = 55m
-                        },
-                        new
-                        {
-                            Id = 14,
-                            CategoryId = 7,
-                            Description = "Kremalı makarna",
-                            Name = "Fettucine Alfredo",
-                            Price = 60m
-                        },
-                        new
-                        {
-                            Id = 15,
-                            CategoryId = 8,
-                            Description = "Zengin kahvaltı tabağı",
-                            Name = "Serpme Kahvaltı",
-                            Price = 120m
-                        },
-                        new
-                        {
-                            Id = 16,
-                            CategoryId = 8,
-                            Description = "Yumurtalı menemen",
-                            Name = "Menemen",
-                            Price = 38m
-                        },
-                        new
-                        {
-                            Id = 17,
-                            CategoryId = 9,
-                            Description = "Klasik pizza",
-                            Name = "Margherita Pizza",
-                            Price = 80m
-                        },
-                        new
-                        {
-                            Id = 18,
-                            CategoryId = 9,
-                            Description = "Sucuklu pizza",
-                            Name = "Sucuklu Pizza",
-                            Price = 90m
-                        },
-                        new
-                        {
-                            Id = 19,
-                            CategoryId = 10,
-                            Description = "Sıcak çay",
-                            Name = "Çay",
-                            Price = 10m
-                        },
-                        new
-                        {
-                            Id = 20,
-                            CategoryId = 10,
-                            Description = "Filtre kahve",
-                            Name = "Kahve",
-                            Price = 22m
                         });
                 });
 
@@ -687,43 +369,23 @@ namespace Restolog.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("44444444-4444-4444-4444-444444444444"),
-                            CreatedAt = new DateTime(2025, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = new Guid("22222222-2222-2222-2222-222222222222"),
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsFull = false,
                             IsReserved = false,
                             Name = "Masa 1",
                             Status = "Boş",
-                            TableNumber = 1
+                            TableNumber = 0
                         },
                         new
                         {
-                            Id = new Guid("55555555-5555-5555-5555-555555555555"),
-                            CreatedAt = new DateTime(2025, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsFull = true,
+                            Id = new Guid("33333333-3333-3333-3333-333333333333"),
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsFull = false,
                             IsReserved = false,
                             Name = "Masa 2",
-                            Status = "Dolu",
-                            TableNumber = 2
-                        },
-                        new
-                        {
-                            Id = new Guid("66666666-6666-6666-6666-666666666666"),
-                            CreatedAt = new DateTime(2025, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsFull = false,
-                            IsReserved = true,
-                            Name = "Masa 3",
-                            Status = "Rezerve",
-                            TableNumber = 3
-                        },
-                        new
-                        {
-                            Id = new Guid("77777777-7777-7777-7777-777777777777"),
-                            CreatedAt = new DateTime(2025, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsFull = false,
-                            IsReserved = false,
-                            Name = "Masa 4",
                             Status = "Boş",
-                            TableNumber = 4
+                            TableNumber = 0
                         });
                 });
 
@@ -761,22 +423,6 @@ namespace Restolog.DataAccess.Migrations
                             Name = "admin",
                             Password = "1234",
                             UserRoleId = 1
-                        },
-                        new
-                        {
-                            Id = new Guid("22222222-2222-2222-2222-222222222222"),
-                            IsActive = true,
-                            Name = "garson",
-                            Password = "1234",
-                            UserRoleId = 2
-                        },
-                        new
-                        {
-                            Id = new Guid("33333333-3333-3333-3333-333333333333"),
-                            IsActive = true,
-                            Name = "kasiyer",
-                            Password = "1234",
-                            UserRoleId = 3
                         });
                 });
 

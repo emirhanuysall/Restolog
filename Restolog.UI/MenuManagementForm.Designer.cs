@@ -275,7 +275,7 @@
             label4.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 162);
             label4.Location = new Point(-1, 0);
             label4.Name = "label4";
-            label4.Size = new Size(115, 13);
+            label4.Size = new Size(116, 13);
             label4.TabIndex = 7;
             label4.Text = "Aktif Kullanıcı Bilgiler";
             // 
@@ -319,6 +319,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoValidate = AutoValidate.EnablePreventFocusChange;
             BackColor = Color.LightSteelBlue;
             ClientSize = new Size(1034, 521);
             Controls.Add(label1);

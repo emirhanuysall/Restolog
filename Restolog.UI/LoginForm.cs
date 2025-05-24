@@ -37,10 +37,11 @@ namespace Restolog.UI
             {
                 CurrentUser.User = user;
 
-                MessageBox.Show($"Giriş başarılı. Hoş geldiniz: {user.Name} ({user.UserRole?.Name ?? "Rol Tanımsız"})");
+               
 
-                new RedirectForm(user).Show();
                 this.Hide();
+                new RedirectForm(user).ShowDialog();
+                this.Close(); // RedirectForm kapatıldığında LoginForm'u da kapat
             }
             else
             {
