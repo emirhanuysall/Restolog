@@ -92,24 +92,7 @@ namespace Restolog.UI
 
         private void InitializeDataGridView()
         {
-            dgvProducts.EnableHeadersVisualStyles = false;
-            dgvProducts.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(34, 36, 49);
-            dgvProducts.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dgvProducts.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            dgvProducts.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-            dgvProducts.RowsDefaultCellStyle.BackColor = Color.FromArgb(40, 42, 54);
-            dgvProducts.RowsDefaultCellStyle.ForeColor = Color.White;
-            dgvProducts.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(75, 75, 75);
-            dgvProducts.RowsDefaultCellStyle.SelectionForeColor = Color.White;
-            dgvProducts.RowsDefaultCellStyle.Font = new Font("Segoe UI", 9F);
-
-            dgvProducts.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(50, 52, 63);
-
-            dgvProducts.CellBorderStyle = DataGridViewCellBorderStyle.Single;
-            dgvProducts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvProducts.RowTemplate.Height = 40;
-            dgvProducts.BackgroundColor = Color.FromArgb(48, 50, 61);
+            DataGridViewStyle.ApplyStyle(dgvProducts, DataGridViewStyle.GridStyle.SleekBlue);
 
             foreach (DataGridViewColumn column in dgvProducts.Columns)
             {

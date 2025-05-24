@@ -121,41 +121,8 @@ namespace Restolog.UI
 
         private void InitializeDataGridView()
         {
-            dgvUsers.EnableHeadersVisualStyles = false;
+            DataGridViewStyle.ApplyStyle(dgvUsers, DataGridViewStyle.GridStyle.SleekBlue);
 
-            // Başlıklar
-            dgvUsers.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(34, 36, 49);
-            dgvUsers.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dgvUsers.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            dgvUsers.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-            // Satırlar
-            dgvUsers.DefaultCellStyle.BackColor = Color.FromArgb(40, 42, 54);
-            dgvUsers.DefaultCellStyle.ForeColor = Color.White;
-            dgvUsers.DefaultCellStyle.Font = new Font("Segoe UI", 9F);
-            dgvUsers.DefaultCellStyle.SelectionBackColor = Color.FromArgb(75, 75, 75);
-            dgvUsers.DefaultCellStyle.SelectionForeColor = Color.White;
-
-            // Alternatif satır
-            dgvUsers.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(50, 52, 63);
-
-            // Hücre kenarlıkları
-            dgvUsers.CellBorderStyle = DataGridViewCellBorderStyle.Single;
-
-            // Arka plan
-            dgvUsers.BackgroundColor = Color.FromArgb(48, 50, 61);
-            dgvUsers.BorderStyle = BorderStyle.None;
-            dgvUsers.GridColor = Color.Gray;
-
-            // Otomatik sığdırma
-            dgvUsers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvUsers.RowTemplate.Height = 40;
-            dgvUsers.AllowUserToAddRows = false;
-            dgvUsers.AllowUserToResizeRows = false;
-            dgvUsers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvUsers.MultiSelect = false;
-
-            // Sütun hizalama
             foreach (DataGridViewColumn column in dgvUsers.Columns)
             {
                 column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -171,18 +138,16 @@ namespace Restolog.UI
 
                     if (status == "Active")
                     {
-                        statusCell.Style.BackColor = Color.Green; 
+                        statusCell.Style.BackColor = Color.FromArgb(34, 197, 94); 
                         statusCell.Style.ForeColor = Color.White;
                     }
                     else if (status == "Passive")
                     {
-                        statusCell.Style.BackColor = Color.Red; 
+                        statusCell.Style.BackColor = Color.FromArgb(239, 68, 68); 
                         statusCell.Style.ForeColor = Color.White;
                     }
                 }
             }
         }
-
-
     }
 }

@@ -98,6 +98,7 @@
             btnDashboard.Text = "DASHBOARD";
             btnDashboard.TextAlign = ContentAlignment.MiddleRight;
             btnDashboard.UseVisualStyleBackColor = false;
+            btnDashboard.Click += btnDashboard_Click;
             // 
             // pictureBox1
             // 

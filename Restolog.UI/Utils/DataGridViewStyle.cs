@@ -82,6 +82,9 @@ public class DataGridViewStyle
         }
 
         // Ortak ayarlar
+        dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+        dgv.ColumnHeadersHeight = 40;
+        dgv.RowTemplate.Height = 35;
         dgv.DefaultCellStyle.SelectionBackColor = Color.FromArgb(147, 197, 253);
         dgv.DefaultCellStyle.SelectionForeColor = Color.FromArgb(17, 24, 39);
         dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;

@@ -63,5 +63,10 @@ namespace Restolog.UI
             var form = new UserManagementForm();
             form.ShowDialog();
         }
+        private void btnDashboard_Click(object sender, EventArgs e)
+        {
+            var form = new DashboardForm();
+            form.ShowDialog();
+        }
     }
 }

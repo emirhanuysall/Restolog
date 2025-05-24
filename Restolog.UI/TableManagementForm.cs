@@ -134,34 +134,14 @@ namespace Restolog.UI
 
         private void InitializeDataGridView()
         {
-            // DataGridView stili
-            dgvTables.EnableHeadersVisualStyles = false;
-            dgvTables.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(34, 36, 49);
-            dgvTables.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White;
-            dgvTables.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            dgvTables.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            DataGridViewStyle.ApplyStyle(dgvTables, DataGridViewStyle.GridStyle.SleekBlue);
 
-            // Satır stili
-            dgvTables.RowsDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(40, 42, 54);
-            dgvTables.RowsDefaultCellStyle.ForeColor = System.Drawing.Color.White;
-            dgvTables.RowsDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dgvTables.RowsDefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(75, 75, 75);
-            dgvTables.RowsDefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
-            dgvTables.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(50, 52, 63);
-
-           
-            dgvTables.CellBorderStyle = DataGridViewCellBorderStyle.Single;
-            dgvTables.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(50, 60, 70);
-            dgvTables.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
-
-            // Sütunlar için stil
             foreach (DataGridViewColumn column in dgvTables.Columns)
             {
                 column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
 
-            // Durum sütunu için renklendirme
             dgvTables.CellFormatting += (sender, e) =>
             {
                 if (e.ColumnIndex == dgvTables.Columns["Durum"].Index && e.Value != null)
@@ -170,10 +150,14 @@ namespace Restolog.UI
                     switch (status)
                     {
                         case "Dolu":
-                            e.CellStyle.BackColor = System.Drawing.Color.Red;
+                            e.CellStyle.BackColor = Color.FromArgb(239, 68, 68); 
+                            e.CellStyle.ForeColor = Color.White;
+
                             break;
                         case "Boş":
-                            e.CellStyle.BackColor = System.Drawing.Color.Green;
+                            e.CellStyle.BackColor = Color.FromArgb(34, 197, 94);
+                            e.CellStyle.ForeColor = Color.White;
+
                             break;
                         case "Rezerve":
                             e.CellStyle.BackColor = System.Drawing.Color.Orange;
@@ -182,14 +166,8 @@ namespace Restolog.UI
                 }
             };
 
-            // Genişlik ayarları
-            dgvTables.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvTables.RowTemplate.Height = 40;
-
-            // Tablonun genel arka plan rengini değiştirme
-            dgvTables.BackgroundColor = System.Drawing.Color.FromArgb(48, 50, 61);
         }
-
 
         private void btnApply_Click(object sender, EventArgs e)
         {
