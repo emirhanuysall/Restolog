@@ -529,20 +529,20 @@
             // lblCurrenTable
             // 
             lblCurrenTable.AutoSize = true;
-            lblCurrenTable.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            lblCurrenTable.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
             lblCurrenTable.Location = new Point(85, 12);
             lblCurrenTable.Name = "lblCurrenTable";
-            lblCurrenTable.Size = new Size(25, 13);
+            lblCurrenTable.Size = new Size(27, 15);
             lblCurrenTable.TabIndex = 14;
             lblCurrenTable.Text = "001";
             // 
             // label12
             // 
             label12.AutoSize = true;
-            label12.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            label12.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
             label12.Location = new Point(4, 12);
             label12.Name = "label12";
-            label12.Size = new Size(67, 13);
+            label12.Size = new Size(79, 15);
             label12.TabIndex = 13;
             label12.Text = "Aktif Masa :";
             // 

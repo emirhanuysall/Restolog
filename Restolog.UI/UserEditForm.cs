@@ -43,11 +43,16 @@ namespace Restolog.UI
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            // Kullanıcı bilgilerini al
             var name = txtName.Text;
             var roleId = (int)cmbRole.SelectedValue;
             var isActive = chkIsActive.Checked;
             var password = txtPassword.Text;
+
+            if (password.Length > 0 && password.Length < 6)
+            {
+                MessageBox.Show("Şifre en az 6 karakter olmalıdır.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             if (_currentUser == null)
             {
@@ -67,7 +72,11 @@ namespace Restolog.UI
                 _currentUser.Name = name;
                 _currentUser.UserRoleId = roleId;
                 _currentUser.IsActive = isActive;
-                _currentUser.Password = password;
+
+                if (!string.IsNullOrEmpty(password))
+                {
+                    _currentUser.Password = password;
+                }
 
                 _userRepository.Update(_currentUser);
             }

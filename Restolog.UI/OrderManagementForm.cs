@@ -253,10 +253,10 @@ namespace Restolog.UI
                 {
                     Size = new Size(buttonWidth, buttonHeight),
                     FlatStyle = FlatStyle.Flat,
-                    BackColor = Color.FromArgb(147, 197, 253),
-                    FlatAppearance = { BorderSize = 1, BorderColor = Color.FromArgb(59, 130, 246) },
+                    BackColor = Color.FromArgb(59, 130, 246),
+                    FlatAppearance = { BorderSize = 1, BorderColor = Color.FromArgb(147, 197, 253) },
                     Font = new Font("Segoe UI", 8, FontStyle.Bold),
-                    ForeColor = Color.FromArgb(59, 130, 255),
+                    ForeColor = Color.White,
                     Text = category.Name,
 
                 };

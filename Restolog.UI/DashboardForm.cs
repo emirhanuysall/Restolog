@@ -11,6 +11,7 @@ namespace Restolog.UI
     {
         public DashboardForm()
         {
+            this.StartPosition = FormStartPosition.CenterScreen;
             InitializeComponent();
             InitializeOrderReportFilter();
             ApplyOrderReportStyle();
@@ -27,6 +28,21 @@ namespace Restolog.UI
             cmbOrderFilter.Items.Add("Bu Yıl");
             cmbOrderFilter.SelectedIndex = 0;
             cmbOrderFilter.SelectedIndexChanged += (s, e) => LoadOrderReport();
+
+            using (var context = new RestologContext())
+            {
+                var users = context.Users.OrderBy(u => u.Name).ToList();
+                cmbUserFilter.Items.Clear();
+                cmbUserFilter.Items.Add("Tümü");
+                foreach (var user in users)
+                {
+                    cmbUserFilter.Items.Add(new { user.Id, user.Name });
+                }
+            }
+            cmbUserFilter.DisplayMember = "Name";
+            cmbUserFilter.ValueMember = "Id";
+            cmbUserFilter.SelectedIndex = 0;
+            cmbUserFilter.SelectedIndexChanged += (s, e) => LoadOrderReport();
         }
 
         private void ApplyOrderReportStyle()
@@ -43,7 +59,6 @@ namespace Restolog.UI
             using var context = new RestologContext();
             var ordersQuery = context.Orders.AsQueryable();
 
-            // Filtre uygula
             if (cmbOrderFilter.SelectedItem != null)
             {
                 var filter = cmbOrderFilter.SelectedItem.ToString();
@@ -71,6 +86,13 @@ namespace Restolog.UI
                     var now = DateTime.Now;
                     ordersQuery = ordersQuery.Where(o => o.CreatedAt.Year == now.Year);
                 }
+            }
+
+            if (cmbUserFilter.SelectedIndex > 0)
+            {
+                dynamic selectedUser = cmbUserFilter.SelectedItem;
+                Guid selectedUserId = selectedUser.Id;
+                ordersQuery = ordersQuery.Where(o => o.UserId == selectedUserId);
             }
 
             var orders = ordersQuery
