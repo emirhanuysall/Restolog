@@ -112,7 +112,7 @@
             // 
             // txtSearch
             // 
-            txtSearch.BackColor = SystemColors.ScrollBar;
+            txtSearch.BackColor = Color.White;
             txtSearch.BorderStyle = BorderStyle.FixedSingle;
             txtSearch.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             txtSearch.Location = new Point(144, 38);
@@ -126,6 +126,7 @@
             btnApply.BackColor = Color.Green;
             btnApply.FlatStyle = FlatStyle.Flat;
             btnApply.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            btnApply.ForeColor = Color.FromArgb(224, 224, 224);
             btnApply.Location = new Point(332, 38);
             btnApply.Name = "btnApply";
             btnApply.Size = new Size(71, 23);
@@ -181,6 +182,7 @@
             btnEdit.BackColor = Color.Peru;
             btnEdit.FlatStyle = FlatStyle.Flat;
             btnEdit.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            btnEdit.ForeColor = Color.FromArgb(224, 224, 224);
             btnEdit.Location = new Point(3, 178);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(161, 41);
@@ -194,6 +196,7 @@
             btnDelete.BackColor = Color.Firebrick;
             btnDelete.FlatStyle = FlatStyle.Flat;
             btnDelete.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            btnDelete.ForeColor = Color.FromArgb(224, 224, 224);
             btnDelete.Location = new Point(3, 131);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(161, 41);
@@ -207,6 +210,7 @@
             btnAdd.BackColor = Color.Green;
             btnAdd.FlatStyle = FlatStyle.Flat;
             btnAdd.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            btnAdd.ForeColor = Color.FromArgb(224, 224, 224);
             btnAdd.Location = new Point(3, 84);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(161, 41);
@@ -284,6 +288,7 @@
             btnReturn.BackColor = Color.SteelBlue;
             btnReturn.FlatStyle = FlatStyle.Flat;
             btnReturn.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            btnReturn.ForeColor = Color.FromArgb(224, 224, 224);
             btnReturn.Location = new Point(3, 384);
             btnReturn.Name = "btnReturn";
             btnReturn.Size = new Size(161, 41);
@@ -297,6 +302,7 @@
             btnLogout.BackColor = Color.Firebrick;
             btnLogout.FlatStyle = FlatStyle.Flat;
             btnLogout.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            btnLogout.ForeColor = Color.FromArgb(224, 224, 224);
             btnLogout.Location = new Point(3, 431);
             btnLogout.Name = "btnLogout";
             btnLogout.Size = new Size(161, 41);

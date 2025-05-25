@@ -30,6 +30,8 @@
         {
             label1 = new Label();
             panel3 = new Panel();
+            label9 = new Label();
+            cmbTableStatus = new ComboBox();
             label7 = new Label();
             txtSearch = new TextBox();
             btnApply = new Button();
@@ -49,8 +51,6 @@
             btnReturn = new Button();
             btnLogout = new Button();
             label2 = new Label();
-            label9 = new Label();
-            cmbTableStatus = new ComboBox();
             panel3.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvTables).BeginInit();
@@ -82,6 +82,25 @@
             panel3.Size = new Size(834, 72);
             panel3.TabIndex = 12;
             // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            label9.Location = new Point(6, 27);
+            label9.Name = "label9";
+            label9.RightToLeft = RightToLeft.Yes;
+            label9.Size = new Size(79, 13);
+            label9.TabIndex = 38;
+            label9.Text = "Masa Durumu";
+            // 
+            // cmbTableStatus
+            // 
+            cmbTableStatus.FormattingEnabled = true;
+            cmbTableStatus.Location = new Point(6, 43);
+            cmbTableStatus.Name = "cmbTableStatus";
+            cmbTableStatus.Size = new Size(121, 23);
+            cmbTableStatus.TabIndex = 37;
+            // 
             // label7
             // 
             label7.AutoSize = true;
@@ -94,7 +113,7 @@
             // 
             // txtSearch
             // 
-            txtSearch.BackColor = SystemColors.ScrollBar;
+            txtSearch.BackColor = Color.White;
             txtSearch.BorderStyle = BorderStyle.FixedSingle;
             txtSearch.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             txtSearch.Location = new Point(185, 44);
@@ -108,6 +127,7 @@
             btnApply.BackColor = Color.Green;
             btnApply.FlatStyle = FlatStyle.Flat;
             btnApply.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            btnApply.ForeColor = Color.FromArgb(224, 224, 224);
             btnApply.Location = new Point(373, 44);
             btnApply.Name = "btnApply";
             btnApply.Size = new Size(71, 23);
@@ -218,7 +238,7 @@
             label4.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 162);
             label4.Location = new Point(-1, 0);
             label4.Name = "label4";
-            label4.Size = new Size(115, 13);
+            label4.Size = new Size(116, 13);
             label4.TabIndex = 7;
             label4.Text = "Aktif Kullanıcı Bilgiler";
             // 
@@ -227,6 +247,7 @@
             btnEdit.BackColor = Color.Peru;
             btnEdit.FlatStyle = FlatStyle.Flat;
             btnEdit.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            btnEdit.ForeColor = Color.FromArgb(224, 224, 224);
             btnEdit.Location = new Point(3, 178);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(161, 41);
@@ -240,6 +261,7 @@
             btnDelete.BackColor = Color.Firebrick;
             btnDelete.FlatStyle = FlatStyle.Flat;
             btnDelete.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            btnDelete.ForeColor = Color.FromArgb(224, 224, 224);
             btnDelete.Location = new Point(3, 131);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(161, 41);
@@ -253,6 +275,7 @@
             btnAdd.BackColor = Color.Green;
             btnAdd.FlatStyle = FlatStyle.Flat;
             btnAdd.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            btnAdd.ForeColor = Color.FromArgb(224, 224, 224);
             btnAdd.Location = new Point(3, 84);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(161, 41);
@@ -266,6 +289,7 @@
             btnReturn.BackColor = Color.SteelBlue;
             btnReturn.FlatStyle = FlatStyle.Flat;
             btnReturn.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            btnReturn.ForeColor = Color.FromArgb(224, 224, 224);
             btnReturn.Location = new Point(3, 384);
             btnReturn.Name = "btnReturn";
             btnReturn.Size = new Size(161, 41);
@@ -279,6 +303,7 @@
             btnLogout.BackColor = Color.Firebrick;
             btnLogout.FlatStyle = FlatStyle.Flat;
             btnLogout.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            btnLogout.ForeColor = Color.FromArgb(224, 224, 224);
             btnLogout.Location = new Point(3, 431);
             btnLogout.Name = "btnLogout";
             btnLogout.Size = new Size(161, 41);
@@ -296,25 +321,6 @@
             label2.Size = new Size(55, 17);
             label2.TabIndex = 6;
             label2.Text = "İşlemler";
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 162);
-            label9.Location = new Point(6, 27);
-            label9.Name = "label9";
-            label9.RightToLeft = RightToLeft.Yes;
-            label9.Size = new Size(79, 13);
-            label9.TabIndex = 38;
-            label9.Text = "Masa Durumu";
-            // 
-            // cmbTableStatus
-            // 
-            cmbTableStatus.FormattingEnabled = true;
-            cmbTableStatus.Location = new Point(6, 43);
-            cmbTableStatus.Name = "cmbTableStatus";
-            cmbTableStatus.Size = new Size(121, 23);
-            cmbTableStatus.TabIndex = 37;
             // 
             // TableManagementForm
             // 

@@ -19,19 +19,17 @@ namespace Restolog.UI
 
         private void RedirectForm_Load(object sender, EventArgs e)
         {
-
-
-            btnOrderManagement.Visible = true;
-            btnMenuManagement.Visible = true;
-            btnTableManagement.Visible = true;
-
             bool isAdmin = _currentUser.UserRoleId == 1;
 
+            btnOrderManagement.Visible = true;
+            btnMenuManagement.Visible = isAdmin;
+            btnTableManagement.Visible = isAdmin;
             btnUserManagement.Visible = isAdmin;
             btnDashboard.Visible = isAdmin;
             pcboxUser.Visible = isAdmin;
             pcboxDashboard.Visible = isAdmin;
-
+            pcboxMenu.Visible = isAdmin;
+            pcboxTable.Visible = isAdmin;
 
         }
 
