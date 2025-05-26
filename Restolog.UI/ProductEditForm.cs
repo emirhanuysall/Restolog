@@ -61,7 +61,19 @@ namespace Restolog.UI
                 return;
             }
 
-            _product.Name = txtName.Text.Trim();
+            string productName = txtName.Text.Trim();
+            int currentProductId = _product?.Id ?? 0;
+
+            // Aynı isimde ürün kontrolü
+            var existingProduct = _productRepo.GetAll()
+                .FirstOrDefault(p => p.Name.ToLower() == productName.ToLower() && p.Id != currentProductId);
+            if (existingProduct != null)
+            {
+                MessageBox.Show("Bu isimde bir ürün zaten mevcut.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            _product.Name = productName;
             _product.Description = txtDescription.Text.Trim();
             _product.Price = nudPrice.Value;
             _product.CategoryId = cmbCategory.SelectedValue != null ? (int)cmbCategory.SelectedValue : 0;

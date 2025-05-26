@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Restolog.Entities.Concrete;
+using Restolog.Core; 
 
 namespace Restolog.UI
 {
@@ -101,7 +102,10 @@ namespace Restolog.UI
                 var user = repo.GetById(id);
                 var form = new UserEditForm(user);
                 if (form.ShowDialog() == DialogResult.OK)
+                {
+                    Logger.Info($"Kullanıcı düzenlendi: {user.Name} (ID: {user.Id}), Kullanıcı:  {CurrentUser.User?.Name ?? "Bilinmiyor"}");
                     LoadUsers();
+                }
             }
         }
         private void btnDelete_Click(object sender, EventArgs e)
@@ -109,11 +113,13 @@ namespace Restolog.UI
             if (dgvUsers.CurrentRow != null)
             {
                 var id = (Guid)dgvUsers.CurrentRow.Cells["Id"].Value;
+                var repo = new EfUserRepository(new RestologContext());
+                var user = repo.GetById(id); 
                 var result = MessageBox.Show("Silmek istediğinize emin misiniz?", "Delete", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    var repo = new EfUserRepository(new RestologContext());
                     repo.Delete(id);
+                    Logger.Info($"Kullanıcı silindi: {user?.Name ?? "Bilinmiyor"} (ID: {id}), Kullanıcı:  {CurrentUser.User?.Name ?? "Bilinmiyor"}");
                     LoadUsers();
                 }
             }

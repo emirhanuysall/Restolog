@@ -69,6 +69,13 @@ namespace Restolog.UI
                 return;
             }
 
+            var existingUser = _userRepository.GetAll().FirstOrDefault(u => u.Name.ToLower() == name.ToLower() && (_currentUser == null || u.Id != _currentUser.Id));
+            if (existingUser != null)
+            {
+                MessageBox.Show("Bu isimde bir kullanıcı zaten mevcut.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             var roleId = (int)cmbRole.SelectedValue;
             var isActive = chkIsActive.Checked;
 

@@ -11,4 +11,10 @@
     <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.3" />
   </ItemGroup>
 
+	
+
+  <ItemGroup>
+	<ProjectReference Include="..\Restolog.Entities\Restolog.Entities.csproj" />
+	  <ProjectReference Include="..\Restolog.DataAccess\Restolog.DataAccess.csproj" />
+  </ItemGroup>
 </Project>

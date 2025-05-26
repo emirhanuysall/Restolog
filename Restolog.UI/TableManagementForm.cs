@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using Restolog.Core; 
 
 namespace Restolog.UI
 {
@@ -113,7 +114,10 @@ namespace Restolog.UI
                 var table = repo.GetById(id);
                 var form = new TableEditForm(table);
                 if (form.ShowDialog() == DialogResult.OK)
+                {
+                    Logger.Info($"Masa düzenlendi: {table.Name} (ID: {table.Id}), Kullanıcı: {CurrentUser.User?.Name ?? "Bilinmiyor"}");
                     LoadTables();
+                }
             }
         }
 
@@ -122,12 +126,13 @@ namespace Restolog.UI
             if (dgvTables.CurrentRow != null)
             {
                 var id = (Guid)dgvTables.CurrentRow.Cells["Id"].Value;
+                var repo = new EfTableEntityRepository(new RestologContext());
+                var table = repo.GetById(id); 
                 var result = MessageBox.Show("Masa silinsin mi?", "Sil", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    var repo = new EfTableEntityRepository(new RestologContext());
                     repo.Delete(id);
-                    LoadTables();
+                    Logger.Info($"Masa silindi: {table?.Name ?? "Bilinmiyor"} (ID: {id}), Kullanıcı: {CurrentUser.User?.Name ?? "Bilinmiyor"}"); LoadTables();
                 }
             }
         }

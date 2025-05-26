@@ -8,6 +8,7 @@ using Restolog.Entities.Concrete;
 using Restolog.DataAccess;
 using System.Drawing.Drawing2D;
 using Microsoft.EntityFrameworkCore;
+using Restolog.Core; // Logger için ekleyin
 
 namespace Restolog.UI
 {
@@ -596,6 +597,8 @@ namespace Restolog.UI
             _context.Orders.Update(CurrentOrder);
             _context.SaveChanges();
 
+            Logger.Info($"Sipariş tamamlandı: Masa {table?.Name ?? "Bilinmiyor"}, Sipariş ID: {CurrentOrder.Id}, Toplam: ₺{total:0.00}, Kullanıcı: {CurrentUser.User?.Name ?? "Bilinmiyor"}");
+
             CurrentOrder = null;
             CurrentOrderDetails.Clear();
             dgOrderItems.DataSource = null;
@@ -673,6 +676,8 @@ namespace Restolog.UI
             }
             _context.SaveChanges();
 
+            Logger.Info($"Sipariş ürünleri silindi: Sipariş ID: {CurrentOrder.Id}, Kullanıcı: {CurrentUser.User?.Name ?? "Bilinmiyor"}");
+
             CurrentOrderDetails.Clear();
 
             var table = _context.Tables.FirstOrDefault(t => t.Id == CurrentOrder.TableId);
@@ -722,6 +727,8 @@ namespace Restolog.UI
                 return;
             }
 
+            string productName = detail.ProductName;
+
             if (detail.Quantity > 1)
             {
                 detail.Quantity -= 1;
@@ -738,6 +745,8 @@ namespace Restolog.UI
             }
 
             _context.SaveChanges();
+
+            Logger.Info($"Siparişten ürün silindi: {productName}, Sipariş ID: {CurrentOrder?.Id}, Kullanıcı: {CurrentUser.User?.Name ?? "Bilinmiyor"}");
 
             dgOrderItems.DataSource = null;
             dgOrderItems.DataSource = CurrentOrderDetails;
