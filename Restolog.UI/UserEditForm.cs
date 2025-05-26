@@ -43,16 +43,34 @@ namespace Restolog.UI
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            var name = txtName.Text;
-            var roleId = (int)cmbRole.SelectedValue;
-            var isActive = chkIsActive.Checked;
+            var name = txtName.Text.Trim();
+            var roleSelected = cmbRole.SelectedItem != null;
             var password = txtPassword.Text;
 
+            // Boş alan kontrolü
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                MessageBox.Show("Kullanıcı adı boş olamaz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (!roleSelected)
+            {
+                MessageBox.Show("Bir rol seçmelisiniz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (_currentUser == null && string.IsNullOrWhiteSpace(password))
+            {
+                MessageBox.Show("Şifre boş olamaz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             if (password.Length > 0 && password.Length < 6)
             {
                 MessageBox.Show("Şifre en az 6 karakter olmalıdır.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+            var roleId = (int)cmbRole.SelectedValue;
+            var isActive = chkIsActive.Checked;
 
             if (_currentUser == null)
             {

@@ -39,6 +39,7 @@
             panel2 = new Panel();
             dgvProducts = new DataGridView();
             panel1 = new Panel();
+            btnAddCategory = new Button();
             btnEdit = new Button();
             btnDelete = new Button();
             btnAdd = new Button();
@@ -165,6 +166,7 @@
             // panel1
             // 
             panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(btnAddCategory);
             panel1.Controls.Add(btnEdit);
             panel1.Controls.Add(btnDelete);
             panel1.Controls.Add(btnAdd);
@@ -176,6 +178,20 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(169, 477);
             panel1.TabIndex = 14;
+            // 
+            // btnAddCategory
+            // 
+            btnAddCategory.BackColor = Color.Green;
+            btnAddCategory.FlatStyle = FlatStyle.Flat;
+            btnAddCategory.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            btnAddCategory.ForeColor = Color.FromArgb(224, 224, 224);
+            btnAddCategory.Location = new Point(3, 225);
+            btnAddCategory.Name = "btnAddCategory";
+            btnAddCategory.Size = new Size(161, 41);
+            btnAddCategory.TabIndex = 15;
+            btnAddCategory.Text = "Kategori Ekle";
+            btnAddCategory.UseVisualStyleBackColor = false;
+            btnAddCategory.Click += btnAddCategory_Click;
             // 
             // btnEdit
             // 
@@ -279,7 +295,7 @@
             label4.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 162);
             label4.Location = new Point(-1, 0);
             label4.Name = "label4";
-            label4.Size = new Size(116, 13);
+            label4.Size = new Size(115, 13);
             label4.TabIndex = 7;
             label4.Text = "Aktif Kullanıcı Bilgiler";
             // 
@@ -372,5 +388,6 @@
         private Label label8;
         private Label lblUsername;
         private Label lblRole;
+        private Button btnAddCategory;
     }
 }
