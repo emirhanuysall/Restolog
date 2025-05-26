@@ -148,5 +148,14 @@ namespace Restolog.UI
                 }
             }
         }
+
+        private void btnAddCategory_Click(object sender, EventArgs e)
+        {
+            var form = new CategoryEditForm();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                LoadCategories();
+            }
+        }
     }
 }
