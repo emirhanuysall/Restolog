@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using Restolog.Core;
 
 namespace Restolog.UI
 {
@@ -131,7 +132,10 @@ namespace Restolog.UI
                 var product = _productRepo.GetById(id);
                 var form = new ProductEditForm(product);
                 if (form.ShowDialog() == DialogResult.OK)
+                {
+                    Logger.Info($"Ürün düzenlendi: {product.Name} (ID: {product.Id}), Kullanıcı: {CurrentUser.User?.Name ?? "Bilinmiyor"}");
                     LoadProducts();
+                }
             }
         }
 
@@ -140,11 +144,12 @@ namespace Restolog.UI
             if (dgvProducts.CurrentRow != null)
             {
                 int id = (int)dgvProducts.CurrentRow.Cells["Id"].Value;
+                var product = _productRepo.GetById(id); 
                 var result = MessageBox.Show("Bu ürünü silmek istediğinize emin misiniz?", "Sil", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
                     _productRepo.Delete(id);
-                    LoadProducts();
+                    Logger.Info($"Ürün silindi: {product?.Name ?? "Bilinmiyor"} (ID: {id}), Kullanıcı: {CurrentUser.User?.Name ?? "Bilinmiyor"}"); LoadProducts();
                 }
             }
         }

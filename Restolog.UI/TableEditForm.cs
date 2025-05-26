@@ -3,6 +3,7 @@ using Restolog.DataAccess.Concrete;
 using Restolog.Entities.Concrete;
 using System;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace Restolog.UI
 {
@@ -40,6 +41,13 @@ namespace Restolog.UI
             }
 
             var repo = new EfTableEntityRepository(new RestologContext());
+
+            var existingTable = repo.GetAll().FirstOrDefault(t => t.Name.ToLower() == name.ToLower() && (_table == null || t.Id != _table.Id));
+            if (existingTable != null)
+            {
+                MessageBox.Show("Bu isimde bir masa zaten mevcut.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             if (_table == null)
             {
