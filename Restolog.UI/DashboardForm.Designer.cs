@@ -37,6 +37,9 @@
             cmbUserFilter = new ComboBox();
             label2 = new Label();
             label3 = new Label();
+            label4 = new Label();
+            cmbTableFilter = new ComboBox();
+            btnReturn = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvOrderReports).BeginInit();
             SuspendLayout();
             // 
@@ -51,7 +54,7 @@
             // lblTotalOrders
             // 
             lblTotalOrders.AutoSize = true;
-            lblTotalOrders.Location = new Point(38, 357);
+            lblTotalOrders.Location = new Point(641, 360);
             lblTotalOrders.Name = "lblTotalOrders";
             lblTotalOrders.Size = new Size(38, 15);
             lblTotalOrders.TabIndex = 1;
@@ -60,7 +63,7 @@
             // lblTotalRevenue
             // 
             lblTotalRevenue.AutoSize = true;
-            lblTotalRevenue.Location = new Point(38, 395);
+            lblTotalRevenue.Location = new Point(641, 398);
             lblTotalRevenue.Name = "lblTotalRevenue";
             lblTotalRevenue.Size = new Size(38, 15);
             lblTotalRevenue.TabIndex = 2;
@@ -69,7 +72,7 @@
             // lblPaidOrders
             // 
             lblPaidOrders.AutoSize = true;
-            lblPaidOrders.Location = new Point(38, 430);
+            lblPaidOrders.Location = new Point(641, 433);
             lblPaidOrders.Name = "lblPaidOrders";
             lblPaidOrders.Size = new Size(38, 15);
             lblPaidOrders.TabIndex = 3;
@@ -119,12 +122,46 @@
             label3.TabIndex = 9;
             label3.Text = "Kullanıcı";
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(409, 10);
+            label4.Name = "label4";
+            label4.Size = new Size(35, 15);
+            label4.TabIndex = 11;
+            label4.Text = "Masa";
+            // 
+            // cmbTableFilter
+            // 
+            cmbTableFilter.FormattingEnabled = true;
+            cmbTableFilter.Location = new Point(409, 25);
+            cmbTableFilter.Name = "cmbTableFilter";
+            cmbTableFilter.Size = new Size(121, 23);
+            cmbTableFilter.TabIndex = 10;
+            // 
+            // btnReturn
+            // 
+            btnReturn.BackColor = Color.SteelBlue;
+            btnReturn.FlatStyle = FlatStyle.Flat;
+            btnReturn.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            btnReturn.ForeColor = Color.FromArgb(224, 224, 224);
+            btnReturn.Location = new Point(40, 384);
+            btnReturn.Name = "btnReturn";
+            btnReturn.Size = new Size(161, 41);
+            btnReturn.TabIndex = 12;
+            btnReturn.Text = "Önceki Sayfaya Dön";
+            btnReturn.UseVisualStyleBackColor = false;
+            btnReturn.Click += btnReturn_Click;
+            // 
             // DashboardForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightSteelBlue;
             ClientSize = new Size(906, 463);
+            Controls.Add(btnReturn);
+            Controls.Add(label4);
+            Controls.Add(cmbTableFilter);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(cmbUserFilter);
@@ -152,5 +189,8 @@
         private ComboBox cmbUserFilter;
         private Label label2;
         private Label label3;
+        private Label label4;
+        private ComboBox cmbTableFilter;
+        private Button btnReturn;
     }
 }

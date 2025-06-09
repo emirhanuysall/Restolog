@@ -33,16 +33,28 @@ namespace Restolog.UI
             {
                 var users = context.Users.OrderBy(u => u.Name).ToList();
                 cmbUserFilter.Items.Clear();
-                cmbUserFilter.Items.Add("Tümü");
+                cmbUserFilter.Items.Add(new { Id = Guid.Empty, Name = "Tümü" });
                 foreach (var user in users)
                 {
                     cmbUserFilter.Items.Add(new { user.Id, user.Name });
+                }
+                var tables = context.Tables.OrderBy(t => t.Name).ToList();
+                cmbTableFilter.Items.Clear();
+                cmbTableFilter.Items.Add(new { Id = Guid.Empty, Name = "Tümü" });
+                foreach (var table in tables)
+                {
+                    cmbTableFilter.Items.Add(new { table.Id, table.Name });
                 }
             }
             cmbUserFilter.DisplayMember = "Name";
             cmbUserFilter.ValueMember = "Id";
             cmbUserFilter.SelectedIndex = 0;
             cmbUserFilter.SelectedIndexChanged += (s, e) => LoadOrderReport();
+
+            cmbTableFilter.DisplayMember = "Name";
+            cmbTableFilter.ValueMember = "Id";
+            cmbTableFilter.SelectedIndex = 0;
+            cmbTableFilter.SelectedIndexChanged += (s, e) => LoadOrderReport();
         }
 
         private void ApplyOrderReportStyle()
@@ -59,6 +71,7 @@ namespace Restolog.UI
             using var context = new RestologContext();
             var ordersQuery = context.Orders.AsQueryable();
 
+            // Tarih filtresi
             if (cmbOrderFilter.SelectedItem != null)
             {
                 var filter = cmbOrderFilter.SelectedItem.ToString();
@@ -95,6 +108,14 @@ namespace Restolog.UI
                 ordersQuery = ordersQuery.Where(o => o.UserId == selectedUserId);
             }
 
+            if (cmbTableFilter.SelectedIndex > 0)
+            {
+                dynamic selectedTable = cmbTableFilter.SelectedItem;
+                Guid selectedTableId = selectedTable.Id;
+                if (selectedTableId != Guid.Empty)
+                    ordersQuery = ordersQuery.Where(o => o.TableId == selectedTableId);
+            }
+
             var orders = ordersQuery
                 .Select(o => new
                 {
@@ -113,5 +134,11 @@ namespace Restolog.UI
             lblTotalRevenue.Text = $"Toplam Ciro: ₺{orders.Sum(x => x.Tutar):0.00}";
             lblPaidOrders.Text = $"Ödenen Sipariş: {orders.Count(x => x.Durum == "Ödendi")}";
         }
+
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
     }
 }
