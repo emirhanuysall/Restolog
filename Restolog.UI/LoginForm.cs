@@ -37,7 +37,7 @@ namespace Restolog.UI
             {
                 CurrentUser.User = user;
 
-               
+               //GIT PUSH DENEMESİ
 
                 this.Hide();
                 new RedirectForm(user).ShowDialog();
