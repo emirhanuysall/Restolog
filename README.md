@@ -61,3 +61,4 @@ Proje katmanları aşağıdaki gibidir:
 - Filtrelenebilir rapor ekranları
 
 ---
+*Sistem Analizi ve Tasarımı dersi için geliştirilmiştir.* 
