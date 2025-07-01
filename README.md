@@ -48,7 +48,7 @@ Proje katmanları aşağıdaki gibidir:
 
 
 3. **Projeyi Başlatın**:  
-`Restolo.UI` projesini başlatın.
+`Restolog.UI` projesini başlatın.
 
 ---
 
